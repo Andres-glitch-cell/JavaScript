@@ -18,3 +18,12 @@ let myVariable = 2
 console.log(myVariable)
 myVariable += 2
 console.log(myVariable)
+
+// Operadores de comparación
+console.log(a > b)
+console.log(a < b)
+console.log(a >= b)
+console.log(a == b) // Igualdad (valor)
+console.log(a === b) // Igualdad estricta (valor y tipo)
+console.log(a != b) // Desigualdad (valor)
+console.log(a !== b) // Desigualdad estricta (valor y tipo)
