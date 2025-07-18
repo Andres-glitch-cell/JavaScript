@@ -35,4 +35,4 @@ console.log(a !== b) // Desigualdad estricta (valor y tipo)
                         //        }
 const estaLloviendo = true
     estaLloviendo ? console.log("Esta lloviendo") 
-                  : console.log ("No esta lloviendo")
+                    : console.log ("No esta lloviendo")
