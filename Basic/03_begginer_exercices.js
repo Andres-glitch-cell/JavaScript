@@ -65,3 +65,5 @@ const miDecimal2 = 10
 // miNumero = 20
 
 // 10. Comenta las líneas que produzcan algún tipo de error al ejecutarse
+
+// Hecho

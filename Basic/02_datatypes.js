@@ -13,7 +13,7 @@ let isStudent = true
 let isEmployed = false
 
 // Undefined (indefinido)
-let notAssigned;
+let notAssigned
 console.log(notAssigned); // Output: undefined
 
 // Null (nulo)
