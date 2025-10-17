@@ -1,7 +1,7 @@
 # 🚀 JavaScript desde Cero: Aprende, Practica y Domina el Core del Desarrollo Web
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Andres-glitch-cell/JavaScript/main/assets/js-banner.png" alt="JavaScript Banner" width="100%" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Logo de JavaScript" width="180" style="border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);" />
 </p>
 
 <p align="center">
@@ -12,7 +12,6 @@
 </p>
 
 ---
-
 ## 🎯 Sobre Este Proyecto
 
 **JavaScript desde Cero** es la **guía esencial y práctica** para cualquiera que aspire a dominar el lenguaje fundamental del desarrollo web moderno.
