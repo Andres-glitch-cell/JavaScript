@@ -1,0 +1,4 @@
+{
+    // Esta línea permite que los scripts de tu HTML se ejecuten en la previsualización.
+    "html.preview.security": "allowScripts"
+}
