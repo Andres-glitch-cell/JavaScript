@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Dos</title>
+</head>
+
+<body>
+    <p>Este es el primer párrafo sin clase.</p>
+    <p>Este es el segundo párrafo sin clase.</p>
+    <div>Esto es un div, no debe cambiar.</div>
+    <p>Este es el tercer párrafo sin clase.</p>
+
+    <script>
+        const todosLosParrafos = document.getElementsByTagName("p")
+        for (let i = 0; i < todosLosParrafos.length; i++) {
+            const parrafo = todosLosParrafos[i]
+            parrafo.textContent = `Parrafo modificado, número: ${i + 1}  modificado por la etiqueta.`
+            parrafo.style.fontSize = "40px"
+        }
+    </script>
+</body>
+
+</html>
