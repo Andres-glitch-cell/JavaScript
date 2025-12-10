@@ -5,12 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio Completo</title>
+    <style>
+        @keyframes example {
+            0% {
+                font-size: 40px;
+            }
+
+            15% {
+                font-size: 35px;
+            }
+
+            25% {
+                font-size: 25px;
+            }
+
+            50% {
+                font-size: 30px;
+            }
+
+            65% {
+                font-size: 35px;
+            }
+
+            80% {
+                font-size: 37px;
+            }
+
+            100% {
+                font-size: 40px;
+            }
+        }
+
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            animation-name: example;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            background: linear-gradient(rgb(146, 115, 115), rgb(217, 217, 92), rgb(222, 138, 255));
+            border-radius: 5%;
+            width: 50%;
+        }
+    </style>
 </head>
 
 <body>
     <script>
-        
+        const elementoPorEncima = document.getElementsByTagName("h1");
+        function cambiarColor() {
+            for (let i = 0; i < elementoPorEncima.length; i++) {
+                elementoPorEncima[i].style.color = "blue";
+            }
+        }
+        // ! IMPORTANTE !
+        function eventoListener() {
+            addEventListener("mouseover", cambiarColor);
+        }
+        window.onload = eventoListener;
     </script>
+    <h1 style="margin: 0 auto; text-align: center; margin-top: 5%;">Ejercicio Completo de
+        lo que hemos hecho con Isaac
+    </h1>
+
+
 </body>
 
 </html>
