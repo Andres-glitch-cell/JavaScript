@@ -1,0 +1,17 @@
+[
+  // ... (otros atajos que puedas tener)
+
+  // 1. Desactiva el comando original (crear archivo sin título) solo si el Explorador está enfocado.
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile",
+    "when": "explorerViewletFocus"
+  },
+
+  // 2. Asigna el comando de crear un archivo en la carpeta seleccionada.
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  }
+]
