@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Básico Simplificado</title>
+    <style>
+        /* ... (Tus estilos se mantienen iguales) ... */
+        /* Simplificamos solo la parte de CSS para este ejemplo */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        .validation-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            visibility: hidden;
+        }
+
+        .error {
+            background-color: #ffdddd;
+            color: #cc0000;
+            visibility: visible;
+        }
+
+        .success {
+            background-color: #ddffdd;
+            color: #00cc00;
+            visibility: visible;
+        }
+
+        input.invalid {
+            border-color: red !important;
+        }
+
+        /* Nuevo estilo para visualización inmediata */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Formulario de Contacto Avanzado</h2>
+
+        <form id="basicForm">
+            <div class="form-group">
+                <label for="nombre">Nombre (Solo letras, min. 3):</label>
+                <input type="text" id="nombre" name="nombre" required
+                    data-error="❌ Nombre: Solo letras y al menos 3 caracteres.">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required data-error="❌ Email: El formato no es válido.">
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">Mensaje (Mínimo 10 caracteres):</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required
+                    data-error="❌ Mensaje: Mínimo 10 caracteres."></textarea>
+            </div>
+
+            <p id="mensajeValidacion" class="validation-message"></p>
+            <button type="submit">Enviar al Servidor</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('basicForm');
+            const validationMessage = document.getElementById('mensajeValidacion');
+
+            // Definición de RegEx en una estructura de datos simple
+            const validationMap = [
+                { id: 'nombre', regex: /^[A-Za-z\s]{3,}$/ },
+                { id: 'email', regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
+                { id: 'mensaje', regex: /^[A-Za-z0-9\s.,?!¡¿]{10,}$/ }
+            ];
+
+            const serverUrl = 'http://localhost:3006/api/contacto'; // Puerto 3006
+
+            function showMessage(msg, isError) {
+                validationMessage.textContent = msg;
+                validationMessage.className = `validation-message ${isError ? 'error' : 'success'}`;
+            }
+
+            // Función centralizada para la validación
+            function runValidation() {
+                // Limpia clases de error de los campos
+                form.querySelectorAll('input, textarea').forEach(el => el.classList.remove('invalid'));
+
+                for (const { id, regex } of validationMap) {
+                    const input = document.getElementById(id);
+                    const value = input.value.trim();
+
+                    // DOM/RegEx: Prueba si el valor coincide con el patrón
+                    if (!regex.test(value)) {
+                        input.classList.add('invalid'); // Manipulación del DOM para feedback visual
+                        return { isValid: false, message: input.dataset.error };
+                    }
+                }
+                return { isValid: true };
+            }
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                // 1. Ejecutar la validación Frontend (DOM/RegEx)
+                const validationResult = runValidation();
+
+                if (!validationResult.isValid) {
+                    showMessage(validationResult.message, true);
+                    return;
+                }
+
+                // Si es válido, prepara los datos
+                const nombre = document.getElementById('nombre').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const mensaje = document.getElementById('mensaje').value.trim();
+                const dataToSend = { nombre, email, mensaje };
+
+                // 2. Envío de datos
+                showMessage('⏳ Enviando datos al servidor Node.js...', false);
+
+                try {
+                    const response = await fetch(serverUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(dataToSend)
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok) {
+                        // Si el servidor devuelve 4xx o 5xx (ej. Email duplicado)
+                        throw new Error(data.message || 'Error desconocido del servidor.');
+                    }
+
+                    // Éxito
+                    showMessage(`✅ ${data.message} (ID: ${data.registroId})`, false);
+                    // Aquí podrías usar window.location (BOM) para redirigir, si quisieras.
+
+                } catch (error) {
+                    // Falla de conexión (Failed to fetch) o error de servidor
+                    console.error('Error de envío:', error);
+                    showMessage(`⚠️ Error: ${error.message}. Asegúrate de que Node.js esté ejecutándose.`, true);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
