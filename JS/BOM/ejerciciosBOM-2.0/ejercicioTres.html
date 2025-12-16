@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Navigator</title>
+</head>
+
+<body>
+    <h2>Información del navegador</h2>
+    <p id="info"></p>
+
+    <script>
+        function mostrarInfo() {
+            let texto = "";
+            texto += "Nombre del navegador (userAgent): " + navigator.userAgent + "<br>";
+            texto += "Sistema operativo (platform): " + navigator.platform + "<br>";
+            texto += "Idioma del navegador: " + navigator.language + "<br>";
+            texto += "¿Estás en línea? " + (navigator.onLine ? "Sí" : "No") + "<br>";
+
+            document.getElementById("info").innerHTML = texto;
+        }
+
+        // Mostrar al cargar la página
+        mostrarInfo();
+    </script>
+</body>
+
+</html>

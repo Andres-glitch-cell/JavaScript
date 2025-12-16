@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios DOM</title>
+    <style>
+        .par {
+            background-color: #f0f0f0;
+        }
+
+        .impar {
+            background-color: #e0e0e0;
+        }
+
+        .resaltado {
+            border: 2px solid orange;
+            padding: 5px;
+        }
+
+        .btn {
+            padding: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header id="cabecera">
+        <h1>Mi Blog de Ejercicios JS</h1>
+    </header>
+
+    <h2>Título 1</h2>
+    <h2>Título 2</h2>
+    <h2>Título 3</h2>
+    <h2>Título 4</h2>
+
+    <div class="contenedor">
+        <p id="parrafo-principal">Este es el párrafo más importante.</p>
+        <p class="par">Párrafo 1 (Par)</p>
+        <p class="impar">Párrafo 2 (Impar)</p>
+        <p class="par">Párrafo 3 (Par)</p>
+    </div>
+
+    <section id="botones">
+        <button class="btn accent">Botón Insertar Párrafo</button>
+        <button class="btn accent">Botón Modificar Párrafo</button>
+        <button class="btn dark">Botón Cambiar Algo A Futuro</button>
+    </section>
+
+    <script>
+        // Este método es el más rápido y simple, ya que los IDs deben ser únicos. 
+        // Siempre devuelve un solo elemento o null si no lo encuentra.
+        const cabeceraID = document.getElementById("cabecera")
+        cabeceraID.style.color = "blue"
+        cabeceraID.style.backgroundColor = "blue-steel"
+        cabeceraID.style.fontFamily = "Arial, Helvetica, sans-serif"
+    </script>
+
+    <script>
+        // Colorear todos los h1's de diferente color
+        // Este método devuelve una HTMLCollection (una lista de elementos).
+        // Necesitas iterar sobre ella (como hicimos con el bucle for) para aplicar cambios a todos.
+        const elementosH1 = document.getElementsByTagName("h2")
+        for (let i = 0; i < elementosH1.length; i++) {
+            elementosH1[0].style.color = "red"
+            elementosH1[1].style.color = "blue"
+            elementosH1[2].style.color = "yellow"
+            elementosH1[3].style.color = "black"
+        }
+
+        // 3. Crear el intervalo para el cambio de color (La lógica de IF/ELSE IF no cambia)
+        setInterval(function () {
+            for (let i = 0; i < elementosH1.length; i++) {
+                if (elementosH1[i].style.color === "red") {
+                    elementosH1[i].style.color = "blue";
+                } else if (elementosH1[i].style.color === "blue") {
+                    elementosH1[i].style.color = "yellow";
+                } else if (elementosH1[i].style.color === "yellow") {
+                    elementosH1[i].style.color = "black";
+                } else {
+                    // Este caso cubre "black" y el inicio de ciclo
+                    elementosH1[i].style.color = "red";
+                }
+            }
+        }, 2000);
+    </script>
+
+    <script>
+        // Seleccionar la clase btn accent y ponerles un borde(buttons) 
+        const claseBoton = document.getElementsByClassName("btn accent")
+        for (let i = 0; i <= claseBoton.length; i++) {
+            claseBoton[i].style.border = "2px solid red"
+        } 
+    </script>
+
+    <script>
+        // Selecciona usando querySelector() y cuando haga mouseOver() que cambie su contenido a
+        // tú ratón ha estado por encima y ha cambiado a "El texto nuevo ha cambiado a querySelector !"
+        const elementoImpar = document.querySelector(".impar")
+        function cambiarTexto() {
+            elementoImpar.textContent = "El texto nuevo ha cambiado gracias a querySelector()"
+        }
+
+        function eventListener() {
+            if (elementoImpar != null) {
+                elementoImpar.addEventListener("mouseenter", cambiarTexto)
+                elementoImpar.addEventListener("mouseleave", function () {
+                    elementoImpar.textContent = "Párrafo 2 (Impar)"
+                })
+            }
+        }
+        eventListener()
+    </script>
+
+    <script>
+        function seleccionarVariosElementos() {
+            const variosElementosPar = document.querySelectorAll(".par")
+            variosElementosPar.forEach(elementoPar => {
+                elementoPar.addEventListener("mouseover", function () {
+                    elementoPar.style.color = "blue"
+                    elementoPar.style.fontWeight = "bold"
+                    elementoPar.style.fontSize = "30px"
+                })
+                elementoPar.addEventListener("mouseout", function () {
+                    elementoPar.style.color = "black"
+                    elementoPar.style.fontWeight = "normal"
+                    elementoPar.style.fontSize = "17px"
+                })
+            });
+        }
+
+        seleccionarVariosElementos()
+    </script>
+
+    <script>
+        function insertarParrafo() {
+            const IDParrafoInsertar = document.createElement("p")
+            IDParrafoInsertar.textContent("Parrafo insertado correctamente !")
+            document.body.appendChild(IDParrafoInsertar)
+        }
+    </script>
+</body>
+
+</html>

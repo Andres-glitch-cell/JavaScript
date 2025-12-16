@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4 - Screen</title>
+</head>
+
+<body>
+    <h2>Información de tu pantalla</h2>
+    <p>Anchura: <span id="ancho"></span> px</p>
+    <p>Altura: <span id="alto"></span> px</p>
+    <p>Profundidad de color: <span id="color"></span> bits</p>
+
+    <br>
+    <button onclick="actualizarPantalla()">Actualizar información</button>
+
+    <script>
+        function actualizarPantalla() {
+            document.getElementById("ancho").textContent = screen.width;
+            document.getElementById("alto").textContent = screen.height;
+            document.getElementById("color").textContent = screen.colorDepth;
+        }
+
+        // Mostrar al cargar
+        actualizarPantalla();
+    </script>
+</body>
+
+</html>

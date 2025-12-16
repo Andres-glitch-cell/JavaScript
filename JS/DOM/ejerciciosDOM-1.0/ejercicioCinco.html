@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5: Borrar Bloque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>5. Borrar Bloque</h1>
+
+    <button onclick="borrar()">Borrar</button>
+
+    <div id="padre">
+        <p id="bloqueParaBorrar" style="border: 1px solid black; padding: 10px; margin-top: 20px;">
+            Soy el bloque que debe ser **eliminado** al pulsar el botón.
+        </p>
+    </div>
+
+    <script>
+        // Solo tienes que escribir el código de la función borrar()
+
+        function borrar() {
+            const bloqueABorrar = document.getElementById('bloqueParaBorrar');
+
+            // Verificamos que el bloque exista antes de intentar borrarlo
+            if (bloqueABorrar) {
+                // Obtenemos el nodo padre del bloque
+                const padre = bloqueABorrar.parentNode;
+
+                // Eliminamos el bloque hijo de su padre
+                padre.removeChild(bloqueABorrar);
+                alert("Bloque eliminado correctamente.");
+            } else {
+                alert("El bloque ya ha sido borrado.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7: Fuentes de Imágenes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #fuentes {
+            border: 1px dashed gray;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>7. Mostrar URLs de Imágenes</h1>
+
+    <button onclick="mostrarFuentes()">Fuentes</button>
+
+    <img src="https://via.placeholder.com/50/FF0000" alt="Rojo">
+    <img src="https://via.placeholder.com/50/00FF00" alt="Verde">
+    <img src="https://via.placeholder.com/50/0000FF" alt="Azul">
+
+    <div id="fuentes">
+        Lista de URLs...
+    </div>
+
+    <script>
+        function mostrarFuentes() {
+            // 1. Leer todos los elementos tipo imagen
+            const imagenes = document.querySelectorAll('img');
+
+            // 2. Obtener el bloque div cuyo id es fuentes
+            const divFuentes = document.getElementById('fuentes');
+
+            if (divFuentes) {
+                // 3. Inicializar el contenido
+                divFuentes.innerHTML = '<h2>URLs Encontradas:</h2>';
+
+                const lista = document.createElement('ul');
+
+                // 4. Iterar y mostrar sus urls
+
+                // --- INICIO del método forEach ---
+                // forEach: Repetirá lo siguiente para cada imagen que haya en la lista 'imagenes'.
+                imagenes.forEach(imagen => {
+                    // 'imagen' es la foto actual que estamos revisando en esta repetición.
+                    // Obtenemos la dirección (URL) de la foto actual usando su propiedad .src.
+                    const url = imagen.src;
+                    // Creamos un nuevo elemento de lista (<li>) en la memoria del navegador.
+                    const itemLista = document.createElement('li');
+                    // Ponemos la dirección (URL) que encontramos como texto dentro de ese nuevo <li>.
+                    itemLista.textContent = url;
+                    // Añadimos este <li> nuevo a la lista grande ('lista', que es el <ul> padre).
+                    lista.appendChild(itemLista);
+                }); // --- FIN del método forEach ---
+                // La variable 'lista' (el <ul>) ya tiene todos los puntos (<li>) creados.
+                // 5. Añadir la lista al div
+                // Insertamos la lista completa (<ul>) dentro del contenedor 'divFuentes' para que se vea en la web.
+                divFuentes.appendChild(lista);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

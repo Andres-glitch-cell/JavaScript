@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Hora Actual</title>
+</head>
+
+<body>
+    <h2>Pulsa para ver la hora y el saludo</h2>
+    <button onclick="mostrarHora()">Hora Actual</button>
+
+    <script>
+        function mostrarHora() {
+            const ahora = new Date();
+            let horas = ahora.getHours();
+            let minutos = ahora.getMinutes();
+            if (minutos < 10) minutos = "0" + minutos;
+
+            let saludo;
+            if (horas < 14) saludo = "Buenos días";
+            else if (horas < 20) saludo = "Buenas tardes";
+            else saludo = "Buenas noches";
+
+            alert(saludo + ", son las " + horas + ":" + minutos + " horas");
+        }
+    </script>
+</body>
+
+</html>

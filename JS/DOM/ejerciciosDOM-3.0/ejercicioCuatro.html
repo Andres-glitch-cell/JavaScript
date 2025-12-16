@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Cuatro</title>
+</head>
+
+<body>
+    <script>
+        /*
+        4.- Introduce un número del 1 al 10. Genera un número aleatoriamente, si el número
+        introducido en igual al generado que salga un mensaje felicitándonos y si no es así nos debe
+        avisar que hemos fallado. 
+        */
+        let numeroRandomEntero = Math.floor(Math.random() * 11);
+        function funcionNumeros() {
+            const input = document.querySelector("#input")
+            let valorInput = input.value
+            alert(typeof valorInput)
+            if (input.value == numeroRandomEntero) {
+                alert("El número tuyo con el número random es el mismo")
+            } else {
+                alert("No es el mismo")
+            }
+        }
+    </script>
+</body>
+
+</html>

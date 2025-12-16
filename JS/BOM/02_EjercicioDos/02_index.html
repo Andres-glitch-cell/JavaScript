@@ -1,102 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 2</title>
 
-    <!-- Estilos del HTML-->
     <style>
         .alineacionCentro {
             text-align: center;
+            margin-top: 100px;
         }
 
         .anchoAltoBoton {
-            font-family: sans-serif;
             font-size: 3rem;
-            letter-spacing: 2.10rem;
-            text-transform: uppercase;
-            color: #ffffff;
+            padding: 20px 40px;
+            background: linear-gradient(90deg, blue, cyan);
+            color: white;
+            border: none;
             border-radius: 30px;
-            background: #3636ff;
-            background: #514e8f;
-            background: #0c00fa;
-            background: linear-gradient(90deg, rgba(12, 0, 250, 1) 0%, rgba(27, 27, 224, 1) 35%, rgba(0, 212, 255, 1) 100%);
-            text-shadow: -4px 4px #ef3550,
-                -8px 8px #939aff,
-                -12px 12px #648dff,
-                -16px 16px #3fa0fa,
-                -20px 20px #2287fa,
-                -24px 24px #3fc9ff,
-                -28px 28px #646fff,
-                -32px 32px #35d7ff,
-                -36px 36px #28f8ff;
-            width: 10em;
-            height: 4em;
-        }
-
-        .ajusteCentrado {
-            display: block;
-            margin: -10%;
-            margin-left: 14px;
-            margin-bottom: -10px;
+            cursor: pointer;
         }
     </style>
-
-    <!-- Script -->
-    <script>
-        // Esta parte la he hecho con Gemini (IA), por que queria hacerlo mas eficiente / fácil de leer.
-        function fecha() {
-            // 1. Obtener el objeto Date
-            const fechaActual = new Date();
-
-            // 2. Definir las etiquetas y los valores en arrays (Cada vez que se pase por el bucle mostrará cada etiqueta 1 vez.)
-            const etiquetas = ["Año", "Mes", "Día", "Hora", "Minutos", "Segundos"];
-
-            // 2.1 Los métodos correspondientes para que nos de el resultado que deseamos
-            const metodosFecha = [
-                fechaActual.getDay(),
-                fechaActual.getFullYear(),
-                fechaActual.getMonth() + 1, // El mes va de 0 a 11, por eso sumamos 1
-                fechaActual.getDate(),
-                fechaActual.getHours(),
-                fechaActual.getMinutes(),
-                fechaActual.getSeconds()
-            ];
-
-            const arrayDias = [
-                "Lunes",
-                "Martes",
-            ]
-
-            // 3. Inicializar el mensaje a mostrar
-            let mensajeCompleto = "Componentes de la fecha actual:\n";
-
-            // 4. Bucle for simple para concatenar la cadena (tradicional y fácil de entender)
-            for (let i = 0; i < metodosFecha.length; i++) {
-                // Concatenación simple: Mensaje = Mensaje + Etiqueta + ": " + Valor + SaltoDeLínea
-                mensajeCompleto = mensajeCompleto + etiquetas[i] + ": " + metodosFecha[i] + "\n";
-                if (metodosFecha[i] === ){
-                    
-                }
-            }
-            // 5. Mostrar el resultado una sola vez
-            alert(mensajeCompleto);
-        }
-
-    </script>
 </head>
 
-<!--Body-->
+<body>
 
-<body class="colorBackground">
     <div class="alineacionCentro">
         <h1>Si pulsas el botón de Fecha actual te mostrará información importante</h1>
-
-        <br>
-        <button class="anchoAltoBoton"> <b class="ajusteCentrado" onclick="fecha()"> Fecha actual </b> </button>
+        <br><br>
+        <button id="botonFecha" class="anchoAltoBoton">Fecha actual</button>
     </div>
+
+    <script>
+        // Función que se ejecuta al pulsar el botón
+        function fecha() {
+            const ahora = new Date();
+
+            // Día de la semana (0=domingo, 1=lunes...)
+            const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const diaSemana = dias[ahora.getDay()];
+
+            // Meses (0=enero...)
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            const mes = meses[ahora.getMonth()];
+
+            const dia = ahora.getDate();
+            const año = ahora.getFullYear();
+            const horas = ahora.getHours();
+            const minutos = ahora.getMinutes();
+            const segundos = ahora.getSeconds();
+
+            // Mensaje simple y claro (solo con + para concatenar)
+            let mensaje = "Fecha y hora actual:\n\n";
+            mensaje = mensaje + "Día de la semana: " + diaSemana + "\n";
+            mensaje = mensaje + "Día: " + dia + "\n";
+            mensaje = mensaje + "Mes: " + mes + "\n";
+            mensaje = mensaje + "Año: " + año + "\n";
+            mensaje = mensaje + "Hora: " + horas + ":" + minutos + ":" + segundos;
+
+            alert(mensaje);
+        }
+
+        // Seleccionamos el botón con getElementById y le añadimos el evento
+        const boton = document.getElementById("botonFecha");
+        boton.addEventListener("click", fecha);
+    </script>
+
 </body>
 
 </html>

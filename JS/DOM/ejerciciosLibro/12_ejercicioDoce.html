@@ -12,9 +12,10 @@
     </style>
     <script type="text/javascript">
         function muestra() {
+            // Crea una constante al que se le guarda el elemento con el ID "adicional"
             const texto = document.getElementById("adicional")
+            // Creamos un atributo de esta misma etiqueta que sea tipo class, y que sea visible
             texto.setAttribute("class", "visible")
-
             const enlaceOculto = document.getElementById("enlace")
             // enlaceOculto.setAttribute("class", "oculto")
             enlaceOculto.remove()

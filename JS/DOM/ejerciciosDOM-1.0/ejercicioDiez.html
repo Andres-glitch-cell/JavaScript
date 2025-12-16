@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10: Ocultar/Mostrar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Estilo para manejar la visibilidad */
+        .oculto {
+            display: none;
+        }
+
+        button {
+            padding: 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>10. Ocultar/Mostrar Botones</h1>
+    <p>El primer botón debe quedar siempre visible.</p>
+
+    <div id="barraDeBotones">
+        <button onclick="abrirCerrar(this)">abrir/cerrar</button>
+
+        <button class="otroBoton">Opción A</button>
+        <button class="otroBoton">Opción B</button>
+        <button class="otroBoton">Opción C</button>
+    </div>
+
+    <script>
+        // La función recibe una referencia al botón que fue pulsado ('this')
+        function abrirCerrar(botonControl) {
+            // 1. Obtenemos todos los botones dentro del contenedor
+            const botones = document.getElementById('barraDeBotones').querySelectorAll('button');
+
+            // 2. Iteramos sobre la lista de botones
+            botones.forEach(boton => {
+                // 3. Ocultamos/mostramos solo si NO es el botón de control
+                if (boton !== botonControl) {
+                    // 4. Alternamos la clase 'oculto'
+                    boton.classList.toggle('oculto');
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9: Insertar Elemento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #666;
+        }
+
+        /* Clase para el nuevo bloque */
+        .destacar {
+            background-color: #ffeb3b;
+            /* Amarillo */
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            border: 1px solid #fbc02d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>9. Insertar Nuevo Bloque</h1>
+
+    <button onclick="nuevoBloque()">Subtitulo (Insertar)</button>
+
+    <hr>
+
+    <h1 id="titular">Contenido Principal (Titular)</h1>
+
+    <h2 id="subtitulo">Este es el bloque subtitulo (Elemento de referencia)</h2>
+
+    <script>
+        function nuevoBloque() {
+            // 1. Elemento de referencia (donde se insertará ANTES)
+            const subtitulo = document.getElementById('subtitulo');
+
+            // 2. Creamos el nuevo elemento div
+            const nuevoDiv = document.createElement('div');
+
+            // 3. Asignamos la clase y el contenido (en negrita)
+            nuevoDiv.classList.add('destacar');
+            nuevoDiv.innerHTML = '<strong>Página web</strong>';
+
+            if (subtitulo) {
+                // 4. Obtenemos el nodo padre del subtítulo
+                const padre = subtitulo.parentNode;
+
+                // 5. Insertamos el nuevo div justo antes del subtítulo
+                // insertBefore(nuevoElemento, elementoDeReferencia)
+                padre.insertBefore(nuevoDiv, subtitulo);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
