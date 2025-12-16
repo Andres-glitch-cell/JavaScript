@@ -29,10 +29,10 @@ console.log(a != b) // Desigualdad (valor)
 console.log(a !== b) // Desigualdad estricta (valor y tipo)
 
 // Operadores ternarios
-    // Funciona igual que un if (condicion < || > || != || = etc) {
-                        //   then
-                        //       sys...("texto")
-                        //        }
+// Funciona igual que un if (condicion < || > || != || = etc) {
+//   then
+//       sys...("texto")
+//        }
 const estaLloviendo = true
-    estaLloviendo ? console.log("Esta lloviendo") 
-                    : console.log ("No esta lloviendo")
+estaLloviendo ? console.log("Esta lloviendo")
+    : console.log("No esta lloviendo")
