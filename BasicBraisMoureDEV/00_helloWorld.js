@@ -1,6 +1,6 @@
 // Básico
 
-console.log("Hola Javascript")
+console.log("CAMBIOS ERROR")
 
 console.log(5 + 2)
 console.log(5 - 2)
