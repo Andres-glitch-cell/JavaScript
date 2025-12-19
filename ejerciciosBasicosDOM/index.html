@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practicar DOM</title>
+  <style>
+    .boton {
+      display: block;
+      margin-top: 1%;
+      /* Hacemos que el icono del cursor se haga un puntero */
+      cursor: pointer;
+      width: 20%;
+      height: 20%;
+    }
+
+    .parrafo {
+      position: fixed;
+      margin-left: 21%;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Primer Elemento</h1>
+  <h1>Segundo elemento</h1>
+  <h1>Tercer elemento</h1>
+
+  <h3 id="h3">Cambiar el backgrund del fondo</h3>
+  <p class="parrafo"><b> Haz Click para comprobar si funciona</b></p>
+  <button class="boton"> <b>Cambiar el backgrund de la etiqueta </b></button>
+  <!--Parrafo Sencillo-->
+  <button class="boton">Poner la etiqueta h3 en color <br> por defecto (sin fondo)</button>
+
+
+
+  <script>
+    // Títulos Arriba
+    const colorRojo = document.getElementsByTagName("h1");
+    function cambiarColor() {
+      for (let i = 0; i < colorRojo.length; i++) {
+        colorRojo[i].addEventListener("click", () => {
+          colorRojo[i].style.color = "red";
+        });
+        if ((colorRojo[i].style.color = "red")) {
+          colorRojo[i].addEventListener("mouseout", () => {
+            colorRojo[i].style.color = "blue";
+            colorRojo[i].style.fontSize = "50px";
+          });
+        } else if ((colorRojo[i].style.color = "blue")) {
+          colorRojo[i].addEventListener("mouseenter", () => {
+            colorRojo[i].style.textAlign = "center";
+            colorRojo[i].style.backgroundColor = "green";
+          });
+        }
+      }
+    }
+
+    // Cambiar backgroundColor
+    const elementoBoton = document.getElementsByClassName("boton")
+    let elementoH3 = document.getElementById("h3")
+    elementoBoton[0].addEventListener("click", () => {
+      elementoH3.style.backgroundColor = "#00913F"
+      elementoH3.textContent = "El color ha cambiado a VERDE !"
+      elementoH3.style.width = "26%"
+      if (elementoBoton[0].addEventListener("click", () => {
+        function popUp() {
+          window.open
+        }
+      })) {
+      }
+    })
+    elementoBoton[1].addEventListener("click", () => {
+      if (elementoH3.style.backgroundColor === "") {
+        elementoH3.style.backgroundColor = "#088989"
+        elementoH3.textContent = "El color se ha cambiado a AZUL !"
+        elementoH3.style.width = "26%"
+      }
+    })
+  </script>
+</body>
+</html>

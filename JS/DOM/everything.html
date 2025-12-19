@@ -29,8 +29,8 @@
 </head>
 
 <body>
-    <header id="cabecera">
-        <h1>Mi Blog de Ejercicios JS</h1>
+    <header>
+        <h1 id="cabecera">Mi Blog de Ejercicios JS</h1>
     </header>
 
     <h2>Título 1</h2>
@@ -46,81 +46,78 @@
     </div>
 
     <section id="botones">
-        <button class="btn accent">Botón Insertar Párrafo</button>
-        <button class="btn accent">Botón Modificar Párrafo</button>
-        <button class="btn dark">Botón Cambiar Algo A Futuro</button>
+        <button class="btn">Botón Insertar Párrafo</button>
+        <button class="btn">Botón Modificar Párrafo</button>
+        <button class="btn">Botón Cambiar Algo A Futuro</button>
     </section>
 
     <script>
-        // Este método es el más rápido y simple, ya que los IDs deben ser únicos. 
-        // Siempre devuelve un solo elemento o null si no lo encuentra.
-        const cabeceraID = document.getElementById("cabecera")
-        cabeceraID.style.color = "blue"
-        cabeceraID.style.backgroundColor = "blue-steel"
-        cabeceraID.style.fontFamily = "Arial, Helvetica, sans-serif"
-    </script>
+        function llamarFunciones() {
+            miBlogDeEjercicios()
+            colorearH1Semaforos()
 
-    <script>
-        // Colorear todos los h1's de diferente color
-        // Este método devuelve una HTMLCollection (una lista de elementos).
-        // Necesitas iterar sobre ella (como hicimos con el bucle for) para aplicar cambios a todos.
-        const elementosH1 = document.getElementsByTagName("h2")
-        for (let i = 0; i < elementosH1.length; i++) {
-            elementosH1[0].style.color = "red"
-            elementosH1[1].style.color = "blue"
-            elementosH1[2].style.color = "yellow"
-            elementosH1[3].style.color = "black"
+        }
+        window.onload = llamarFunciones
+
+        // Funcion para colorerar el titulo de arriba de color azul
+        function miBlogDeEjercicios() {
+            // Siempre devuelve un solo elemento o null si no lo encuentra.
+            const cabeceraID = document.getElementById("cabecera")
+            cabeceraID.style.color = "blue"
+            cabeceraID.style.backgroundColor = "blue-steel"
+            cabeceraID.style.fontFamily = "Arial, Helvetica, sans-serif"
         }
 
-        // 3. Crear el intervalo para el cambio de color (La lógica de IF/ELSE IF no cambia)
-        setInterval(function () {
+        function colorearH1Semaforos() {
+            // Colorear todos los h1's de diferente color ([HTML_COLLECTION])
+            const elementosH1 = document.getElementsByTagName("h2")
             for (let i = 0; i < elementosH1.length; i++) {
-                if (elementosH1[i].style.color === "red") {
-                    elementosH1[i].style.color = "blue";
-                } else if (elementosH1[i].style.color === "blue") {
-                    elementosH1[i].style.color = "yellow";
-                } else if (elementosH1[i].style.color === "yellow") {
-                    elementosH1[i].style.color = "black";
-                } else {
-                    // Este caso cubre "black" y el inicio de ciclo
-                    elementosH1[i].style.color = "red";
-                }
+                elementosH1[0].style.color = "red"
+                elementosH1[1].style.color = "blue"
+                elementosH1[2].style.color = "yellow"
+                elementosH1[3].style.color = "black"
             }
-        }, 2000);
-    </script>
 
-    <script>
-        // Seleccionar la clase btn accent y ponerles un borde(buttons) 
-        const claseBoton = document.getElementsByClassName("btn accent")
+            // Hacer un setInterval() para que vaya cambiando en modo semáforo.
+            setInterval(() => {
+                for (let i = 0; i < elementosH1.length; i++) {
+                    if (elementosH1[i].style.color === "red") {
+                        elementosH1[i].style.color = "blue";
+                    } else if (elementosH1[i].style.color === "blue") {
+                        elementosH1[i].style.color = "yellow";
+                    } else if (elementosH1[i].style.color === "yellow") {
+                        elementosH1[i].style.color = "black";
+                    } else {
+                        // Este caso cubre "black" y el inicio de ciclo
+                        elementosH1[i].style.color = "red";
+                    }
+                }
+            }, 2000);
+        }
+
+        // Seleccionar la clase btn  y ponerles un borde(buttons) 
+        const claseBoton = document.getElementsByClassName("btn")
         for (let i = 0; i <= claseBoton.length; i++) {
             claseBoton[i].style.border = "2px solid red"
-        } 
-    </script>
+        }
 
-    <script>
         // Selecciona usando querySelector() y cuando haga mouseOver() que cambie su contenido a
         // tú ratón ha estado por encima y ha cambiado a "El texto nuevo ha cambiado a querySelector !"
-        const elementoImpar = document.querySelector(".impar")
+
         function cambiarTexto() {
-            elementoImpar.textContent = "El texto nuevo ha cambiado gracias a querySelector()"
-        }
-
-        function eventListener() {
-            if (elementoImpar != null) {
-                elementoImpar.addEventListener("mouseenter", cambiarTexto)
-                elementoImpar.addEventListener("mouseleave", function () {
-                    elementoImpar.textContent = "Párrafo 2 (Impar)"
+            const elementoImpar = document.getElementsByClassName("impar")
+            elementoImpar[0].addEventListener("mouseenter", () => {
+                elementoImpar[0].textContent = "Has pasado el ratón por encima !"
+                elementoImpar[0].addEventListener("mouseout", () => {
+                    
                 })
-            }
+            })
         }
-        eventListener()
-    </script>
 
-    <script>
         function seleccionarVariosElementos() {
             const variosElementosPar = document.querySelectorAll(".par")
             variosElementosPar.forEach(elementoPar => {
-                elementoPar.addEventListener("mouseover", function () {
+                elementoPar.addEventListener("mouseover", () => {
                     elementoPar.style.color = "blue"
                     elementoPar.style.fontWeight = "bold"
                     elementoPar.style.fontSize = "30px"
@@ -133,14 +130,13 @@
             });
         }
 
-        seleccionarVariosElementos()
-    </script>
-
-    <script>
         function insertarParrafo() {
             const IDParrafoInsertar = document.createElement("p")
-            IDParrafoInsertar.textContent("Parrafo insertado correctamente !")
-            document.body.appendChild(IDParrafoInsertar)
+            const boton = document.getElementsByClassName("btn")
+            boton[0].addEventListener("click", () => {
+                IDParrafoInsertar.textContent = "Parrafo insertado correctamente !"
+                document.body.appendChild(IDParrafoInsertar)
+            })
         }
     </script>
 </body>
