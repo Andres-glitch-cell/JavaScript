@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6 - Abrir y cerrar pestaña</title>
+</head>
+
+<body>
+    <h2>Página principal</h2>
+    <button onclick="abrirVentana()">Abrir</button>
+
+    <script>
+        let ventana;  // variable global para poder cerrarla
+
+        function abrirVentana() {
+            ventana = window.open("", "_blank", "width=400,height=300");
+            ventana.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head><title>Ventana nueva</title></head>
+                <body style="text-align:center;padding-top:50px;">
+                    <h2>Esta es la ventana nueva</h2>
+                    <button onclick="window.close()">Cerrar</button>
+                </body>
+                </html>
+            `);
+        }
+    </script>
+</body>
+
+</html>

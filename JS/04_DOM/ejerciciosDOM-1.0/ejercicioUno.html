@@ -1,0 +1,66 @@
+<head>
+    <style>
+        .estiloCarga {
+            text-align: center;
+        }
+
+        .alinearCentro{
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="alinearCentro">
+    <progress id="barraProgreso" min="0" max="100">
+        Este es un elemento de progreso no soportado por tu navegador.
+    </progress>
+    </div>
+
+    <p id="porcentajeTexto" class="estiloCarga">0%</p>
+    <script>
+        /*
+        EJERCICIO 1
+        Utilizando el DOM y las herramientas proporcionadas en el siguiente enlace: Barras de
+        Progreso en HTML5, implementa una barra de progreso dinámica en HTML5. Asegúrate
+        de que la barra refleje el progreso de manera visual, simulando una carga. Además, aplica
+        las   propiedades   de   CSS   necesarias   para   mejorar   su   apariencia   y   darle   un   estilo
+        visualmente atractivo (Puedes utilizar las funciones de tiempo, setinterval()....)
+        */
+        function funcionBarraProgreso() {
+
+            // Usamos .getElementById para obtener el objeto de la etiqueta <progress>
+            const barra = document.getElementById("barraProgreso");
+            const texto = document.getElementById("porcentajeTexto");
+
+            // Inicializamos el conteo desde 0
+            let progresoActual = 0;
+            const MAXIMO = 100;
+            const INCREMENTO = 0.01;
+            // Intervalo de 0.01 segundos
+            const VELOCIDAD = 1;
+
+            // Funcion 
+            function actualizarBarra() {
+                // Si el progreso actual es mayor que el MAXIMO es que ya ha acabado
+                if (progresoActual >= MAXIMO) {
+                    texto.textContent = "¡Carga Finalizada! (Abre la consola con F12 para comprobar que ya ha acabado!)";
+                    console.log("Carga completa y temporizador detenido.")
+                    // Devuelve los valores que tiene dentro del if () -> En este caso, los textos
+                    return
+                }
+
+                progresoActual += INCREMENTO;
+                barra.value = progresoActual;
+
+                // Actualizamos el texto para mostrar el porcentaje actual (Preguntando a IA)
+                texto.textContent = `${progresoActual.toFixed(2)}%`;
+            }
+            const intervalo = setInterval(actualizarBarra, VELOCIDAD);
+        }
+        // Ejecutar la función para iniciar la barra de progreso cuando el script cargue
+        funcionBarraProgreso();
+    </script>
+</body>
+
+</html>

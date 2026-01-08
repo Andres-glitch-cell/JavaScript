@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+
+    <style>
+        .alineacionCentro {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .anchoAltoBoton {
+            font-size: 3rem;
+            padding: 20px 40px;
+            background: linear-gradient(90deg, blue, cyan);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="alineacionCentro">
+        <h1>Si pulsas el botón de Fecha actual te mostrará información importante</h1>
+        <br><br>
+        <button id="botonFecha" class="anchoAltoBoton">Fecha actual</button>
+    </div>
+
+    <script>
+        // Función que se ejecuta al pulsar el botón
+        function fecha() {
+            const ahora = new Date();
+
+            // Día de la semana (0=domingo, 1=lunes...)
+            const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const diaSemana = dias[ahora.getDay()];
+
+            // Meses (0=enero...)
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            const mes = meses[ahora.getMonth()];
+
+            const dia = ahora.getDate();
+            const año = ahora.getFullYear();
+            const horas = ahora.getHours();
+            const minutos = ahora.getMinutes();
+            const segundos = ahora.getSeconds();
+
+            // Mensaje simple y claro (solo con + para concatenar)
+            let mensaje = "Fecha y hora actual:\n\n";
+            mensaje = mensaje + "Día de la semana: " + diaSemana + "\n";
+            mensaje = mensaje + "Día: " + dia + "\n";
+            mensaje = mensaje + "Mes: " + mes + "\n";
+            mensaje = mensaje + "Año: " + año + "\n";
+            mensaje = mensaje + "Hora: " + horas + ":" + minutos + ":" + segundos;
+
+            alert(mensaje);
+        }
+
+        // Seleccionamos el botón con getElementById y le añadimos el evento
+        const boton = document.getElementById("botonFecha");
+        boton.addEventListener("click", fecha);
+    </script>
+
+</body>
+
+</html>

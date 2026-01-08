@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2 - Fecha Actual</title>
+</head>
+
+<body>
+    <h2>Pulsa el botón para ver la fecha actual</h2>
+    <button onclick="mostrarFecha()">Fecha Actual</button>
+
+    <script>
+        function mostrarFecha() {
+            const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+            const hoy = new Date();
+            const fechaTexto = dias[hoy.getDay()] + ", " + hoy.getDate() + " de " +
+                meses[hoy.getMonth()] + " de " + hoy.getFullYear();
+
+            alert(fechaTexto);
+        }
+    </script>
+</body>
+
+</html>

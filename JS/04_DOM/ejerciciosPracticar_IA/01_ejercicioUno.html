@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Uno</title>
+</head>
+
+<body>
+    <p id="mensajeInicial">
+        Hola. Mi contenido será cambiado en breve por JavaScript.
+    </p>
+    <script>
+        const elementoAmodificar = document.getElementById("mensajeInicial")
+        if (elementoAmodificar) {
+            elementoAmodificar.textContent = "Felicidades he manipulado el DOM"
+            elementoAmodificar.style.color = "red"
+            elementoAmodificar.style.fontWeight = "bold"
+        }
+    </script>
+</body>
+
+</html>

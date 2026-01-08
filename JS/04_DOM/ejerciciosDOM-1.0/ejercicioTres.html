@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3: Cambiar Estilo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>3. Cambiar Estilo del Titular</h1>
+    <h1 id="titular" style="color: black; text-align: left;">Hola Mundo</h1>
+    <button onclick="cambiarEstilo()">Cambiar estilo</button>
+    <script>
+        // El único cambio será en el bloque cambiar y el código de función cambiar()
+        function cambiarEstilo() {
+            const titular = document.getElementById('titular');
+            // 1. Cambiamos el color del texto a rojo
+            titular.style.color = 'red';
+            // 2. Centramos el texto
+            titular.style.textAlign = 'center';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 8: Alternar Clase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        /* La clase que se añadirá o eliminará */
+        .activo {
+            color: blue;
+            font-size: 2.5em;
+            border: 3px dashed blue;
+            padding: 15px;
+            background-color: #e0f7fa;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>8. Alternar Clase</h1>
+    <p>Haz clic en el titular para añadir o eliminar la clase **activo**.</p>
+
+    <h1 id="titular" onclick="toggleClase()">El Titular de la Página</h1>
+
+    <script>
+        function toggleClase() {
+            // El elemento que contiene al encabezado
+            const titular = document.getElementById('titular');
+
+            // classList.toggle() añade la clase si no está, y la quita si ya está.
+            if (titular) {
+                titular.classList.toggle('activo');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

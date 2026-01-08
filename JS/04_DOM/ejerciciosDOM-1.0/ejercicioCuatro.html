@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4: Crear Nuevo Div</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #contenedor {
+            border: 1px dashed gray;
+            padding: 10px;
+            margin-top: 10px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>4. Crear Nuevo Bloque Div</h1>
+
+    <button onclick="creaDiv()">Crear</button>
+
+    <div id="contenedor">
+        Contenedor.
+    </div>
+
+    <script>
+        function creaDiv() {
+            // 1. Creamos el nuevo elemento div
+            const nuevoDiv = document.createElement('div');
+
+            // 2. Asignamos el contenido de texto (con negrita)
+            nuevoDiv.innerHTML = 'Javascript permite crear páginas **dinámicas**.';
+
+            // 3. Aplicamos los estilos (texto blanco, fondo rojo, centrado)
+            nuevoDiv.style.backgroundColor = 'red';
+            nuevoDiv.style.color = 'white';
+            nuevoDiv.style.textAlign = 'center';
+            nuevoDiv.style.padding = '10px';
+            nuevoDiv.style.margin = '10px 0';
+
+            // 4. Obtenemos el contenedor
+            const contenedor = document.getElementById('contenedor');
+
+            // 5. Añadimos el nuevo div al final del contenedor
+            if (contenedor) {
+                contenedor.appendChild(nuevoDiv);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
