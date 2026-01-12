@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p id="textoEjercicioTres">Este párrafo cambiará de color usando botones radio.</p>
+
+    <input type="radio" name="colores" onclick="cambiarColorRadio('green')"> Verde
+    <input type="radio" name="colores" onclick="cambiarColorRadio('blue')"> Azul
+    <input type="radio" name="colores" onclick="cambiarColorRadio('red')"> Rojo
+
+    <script>
+        function cambiarColorRadio(colorParaPoner) {
+            var elParrafo = document.getElementById("textoEjercicioTres");
+            elParrafo.style.color = colorParaPoner;
+        }
+    </script>
+</body>
+
+</html>

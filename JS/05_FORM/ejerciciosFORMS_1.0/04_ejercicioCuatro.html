@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <p id="textoEjercicioCuatro">Párrafo para probar Negrita y Cursiva.</p>
+
+    Negrita <input type="checkbox" id="cajaNegrita" onclick="aplicarEstilo()">
+    Cursiva <input type="checkbox" id="cajaCursiva" onclick="aplicarEstilo()">
+
+    <script>
+        function aplicarEstilo() {
+            var parrafo = document.getElementById("textoEjercicioCuatro");
+            var marcaNegrita = document.getElementById("cajaNegrita").checked;
+            var marcaCursiva = document.getElementById("cajaCursiva").checked;
+
+            if (marcaNegrita == true) {
+                parrafo.style.fontWeight = "bold";
+            } else {
+                parrafo.style.fontWeight = "normal";
+            }
+
+            if (marcaCursiva == true) {
+                parrafo.style.fontStyle = "italic";
+            } else {
+                parrafo.style.fontStyle = "normal";
+            }
+        }
+    </script>
+</body>
+
+</html>
