@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio Uno</title>
+    <style>
+        img {
+            border-radius: 10px;
+            border: rgb(4, 0, 255) solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>La web para aprender programación</h1>
+    <p>Párrafo Uno</p>
+    <p>Párrafo Dos</p>
+    <img id="imagenOriginal" src="nurburgring-circuit-in-the-dark.jpg" />
+    <style>
+        img {
+            margin-left: 1%;
+            margin-right: 1%;
+        }
+    </style>
+    <form>
+
+    </form>
+
+    <script>
+        function cambiarImagen() {
+            const imagen = document.getElementById("imagenOriginal")
+            let nuevaImagen = "capsule_616x353.jpg"
+            imagen.addEventListener("mouseenter", () => {
+                imagen.src = nuevaImagen
+            })
+            imagen.addEventListener("mouseout", () => {
+                imagen.src = "nurburgring-circuit-in-the-dark.jpg"
+                imagen.style.width = "98%"
+                imagen.style.height = "440px"
+            })
+        }
+
+        window.onload = () => {
+            cambiarImagen()
+        }
+    </script>
+</body>
+
+</html>

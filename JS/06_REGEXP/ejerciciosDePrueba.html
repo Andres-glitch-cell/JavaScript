@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practicar RegExp</title>
+    <style>
+        @keyframes bordeAnimado {
+            0% {
+                border: 5px rgb(134, 255, 134) solid;
+            }
+
+            10% {
+                border: 5px rgb(134, 255, 184) solid;
+            }
+
+            20% {
+                border: 5px rgb(134, 255, 225) solid;
+
+            }
+
+            30% {
+                border: 5px rgb(134, 190, 255) solid;
+            }
+
+            40% {
+                border: 5px rgb(134, 152, 255) solid;
+            }
+
+            50% {
+                border: 5px rgb(134, 255, 229) solid;
+            }
+
+            60% {
+                border: 5px rgb(134, 255, 164) solid;
+            }
+
+            70% {
+                border: 5px rgb(81, 255, 125) solid;
+            }
+
+            80% {
+
+                border: 5px rgb(174, 255, 81) solid;
+            }
+
+            90% {
+                border: 5px rgb(110, 255, 81) solid;
+
+            }
+
+            100% {
+                border: 5px rgb(96, 255, 96) solid;
+            }
+        }
+
+
+        @keyframes bordeAnimadoDos {
+            0% {
+                border: 2px rgb(134, 255, 134) solid;
+            }
+
+            10% {
+                border: 2px rgb(134, 255, 184) solid;
+            }
+
+            20% {
+                border: 2px rgb(134, 255, 225) solid;
+
+            }
+
+            30% {
+                border: 2px rgb(134, 190, 255) solid;
+            }
+
+            40% {
+                border: 2px rgb(134, 152, 255) solid;
+            }
+
+            50% {
+                border: 2px rgb(134, 255, 229) solid;
+            }
+
+            60% {
+                border: 2px rgb(134, 255, 164) solid;
+            }
+
+            70% {
+                border: 2px rgb(81, 255, 125) solid;
+            }
+
+            80% {
+
+                border: 2px rgb(174, 255, 81) solid;
+            }
+
+            90% {
+                border: 2px rgb(110, 255, 81) solid;
+
+            }
+
+            100% {
+                border: 2px rgb(96, 255, 96) solid;
+            }
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10%;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgb(144, 144, 255);
+            width: 60%;
+            padding: 20px;
+            border-radius: 8px;
+            animation-name: bordeAnimado;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+        }
+
+        input {
+            margin-top: 1%;
+            margin-bottom: 2%;
+            border-radius: 10px;
+            border: 2px black solid;
+            height: 20px;
+            transition: border-color 1.5s ease, box-shadow 1.5s ease;
+        }
+
+        input:hover {
+            border-color: rgb(96, 255, 96);
+            box-shadow: 0 0 20px rgb(255, 0, 221);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <form>
+            Nombre <input type="text" /> <br> <br>
+            Apellidos <input type="text" /> <br> <br>
+            Edad <input type="number" />
+            <br>
+        </form>
+    </div>
+
+    <script>
+        function bordeInputs() {
+            const elementoInput = document.getElementsByTagName("input")
+            for (let i = 0; i < elementoInput.length; i++) {
+                elementoInput[i].addEventListener("mouseenter", () => {
+                    elementoInput[i].style.cursor = "pointer"
+                })
+                elementoInput[i].addEventListener("mouseleave", () => {
+                    elementoInput[i].style.cursor = ""
+                })
+            }
+        }
+
+        window.onload = function () {
+            bordeInputs()
+        }
+
+    </script>
+</body>
+
+</html>
