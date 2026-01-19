@@ -55,7 +55,6 @@
             }
         }
 
-
         @keyframes bordeAnimadoDos {
             0% {
                 border: 2px rgb(134, 255, 134) solid;
@@ -105,6 +104,30 @@
             }
         }
 
+        @keyframes bordeAnimadoInputs {
+            0% {}
+
+            10% {}
+
+            20% {}
+
+            30% {}
+
+            40% {}
+
+            50% {}
+
+            60% {}
+
+            70% {}
+
+            80% {}
+
+            90% {}
+
+            100% {}
+        }
+
         .contenedor {
             display: flex;
             justify-content: center;
@@ -117,7 +140,7 @@
             flex-direction: column;
             align-items: center;
             background-color: rgb(144, 144, 255);
-            width: 60%;
+            width: 30%;
             padding: 20px;
             border-radius: 8px;
             animation-name: bordeAnimado;
@@ -131,7 +154,7 @@
             border-radius: 10px;
             border: 2px black solid;
             height: 20px;
-            transition: border-color 1.5s ease, box-shadow 1.5s ease;
+            transition: border-color 1s ease, box-shadow 3.5s ease;
         }
 
         input:hover {
@@ -152,7 +175,7 @@
     </div>
 
     <script>
-        function bordeInputs() {
+        function punteroCursor() {
             const elementoInput = document.getElementsByTagName("input")
             for (let i = 0; i < elementoInput.length; i++) {
                 elementoInput[i].addEventListener("mouseenter", () => {
@@ -165,7 +188,7 @@
         }
 
         window.onload = function () {
-            bordeInputs()
+            punteroCursor()
         }
 
     </script>
