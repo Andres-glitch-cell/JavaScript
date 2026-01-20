@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Prueba Cookie Funcional</title>
+</head>
+
+<body>
+    <h1>Probando Cookies en JS</h1>
+
+    <button onclick="crearCookie()">Crear Cookie</button>
+    <button onclick="leerCookie()">Leer Cookie</button>
+    <button onclick="borrarCookie()"> Borrar Cookie </button>
+    <script>
+        function crearCookie() {
+            let valorPrueba = "Hola mundo!";
+            document.cookie = "testcookie=" + encodeURIComponent(valorPrueba) + "; max-age=3600; path=/";
+            alert("Cookie guardada.");
+        }
+
+        function borrarCookie() {
+            document.cookie = "testcookie= max-age=0; path=/";
+            console.log("Cookie con nombre <b>testcookie</b> eliminada correctamente !")
+        }
+        function leerCookie() {
+            alert("Tus cookies actuales: " + document.cookie);
+        }
+
+        // Configuramos los botones
+        document.getElementById("btnEnviar").onclick = crearCookie;
+        document.getElementById("btnVer").onclick = leerCookie;
+
+        // También se ejecutará al cargar, como tenías tú
+        window.onload = function () {
+            console.log("Estado actual de cookies: " + document.cookie);
+        };
+    </script>
+</body>
+
+</html>
