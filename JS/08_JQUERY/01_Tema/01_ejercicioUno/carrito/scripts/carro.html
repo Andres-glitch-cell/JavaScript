@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-	<title>Carro de la compra con jQuery</title>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<link rel="stylesheet" title="normal" href="css/carro.css" type="text/css" media="screen" />
-	<script src="scripts/carro.js" type="text/javascript"></script>
+	<meta charset="UTF-8">
+	<title>Carrito de la compra con jQuery</title>
+	<link rel="stylesheet" href="css/carro.css" media="screen">
+
+	<!-- jQuery ÚNICO y actual (3.7.1) -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+	<!-- Tu lógica → solo una vez -->
+	<script src="carro.js"></script>
 </head>
+
 <body>
+
 	<div id="item_container">
 		<div class="item" id="i1">
-			<img src="img/camiseta1.jpg" alt="descripción i1"/>
+			<img src="img/camiseta1.jpg" alt="descripción i1" />
 			<label class="title">Camiseta 1</label>
 			<label class="price">20 €</label>
 			<label class="stock">Stock 10</label>
 		</div>
 		<div class="item" id="i2">
-			<img src="img/reloj2.jpg" alt="descripción i2"/>
+			<img src="img/reloj2.jpg" alt="descripción i2" />
 			<label class="title">Reloj 2</label>
 			<label class="price">24 €</label>
 			<label class="stock">Stock 10</label>
 		</div>
 		<div class="item" id="i3">
-			<img src="img/camiseta3.jpg" alt="descripción i3"/>
+			<img src="img/camiseta3.jpg" alt="descripción i3" />
 			<label class="title">Camiseta 3</label>
 			<label class="price">18 €</label>
 			<label class="stock">Stock 10</label>
 		</div>
 		<div class="item" id="i4">
-			<img src="img/reloj4.jpg" alt="descripción i4"/>
+			<img src="img/reloj4.jpg" alt="descripción i4" />
 			<label class="title">Reloj 4</label>
 			<label class="price">30 €</label>
 			<label class="stock">Stock 10</label>
 		</div>
 		<div class="item" id="i5">
-			<img src="img/reloj5.jpg" alt="descripción i5"/>
+			<img src="img/reloj5.jpg" alt="descripción i5" />
 			<label class="title">Reloj 5</label>
 			<label class="price">28 €</label>
 			<label class="stock">Stock 10</label>
 		</div>
 		<div class="clear"></div>
 	</div>
+
 	<div id="cart_container">
 		<div id="cart_title">
 			<span>Carrito</span>
@@ -57,14 +67,18 @@
 			</div>
 			<div id="nav_right">
 				<span class="sptext">
-					<label>Compras </label><input id="citem" value="0" readonly title="Número de productos comprados"/>
+					<label>Compras </label>
+					<input id="citem" value="0" readonly title="Número de productos comprados" />
 				</span>
 				<span class="sptext">
-					<label>Precio </label><input id="cprice" value="0 €" readonly  title="Precio total de los productos comprados"/>
+					<label>Precio </label>
+					<input id="cprice" value="0 €" readonly title="Precio total de los productos comprados" />
 				</span>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
+
 </body>
+
 </html>
