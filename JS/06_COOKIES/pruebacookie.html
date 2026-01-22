@@ -9,31 +9,76 @@
 <body>
     <h1>Probando Cookies en JS</h1>
 
-    <button onclick="crearCookie()">Crear Cookie</button>
-    <button onclick="leerCookie()">Leer Cookie</button>
-    <button onclick="borrarCookie()"> Borrar Cookie </button>
+    <button id="uno">Crear Cookie</button>
+    <button id="dos">Crear Varias Cookies </button>
+    <button id="tres">Leer Cookie</button>
+    <button id="cuatro"> Borrar Cookie && Cookies </button>
     <script>
         function crearCookie() {
-            let valorPrueba = "Hola mundo!";
-            document.cookie = "testcookie=" + encodeURIComponent(valorPrueba) + "; max-age=3600; path=/";
-            alert("Cookie guardada.");
+            const elementoIDUno = document.getElementById("uno")
+            elementoIDUno.addEventListener("click", () => {
+                let valorPrueba = " Hola buenas tardes!";
+                encodeURIComponent(valorPrueba) + "; max-age=3600; path=/";
+                alert("Cookie guardada.");
+            })
+        }
+
+        function leerCookie() {
+            const elementoIDDos = document.getElementById("dos")
+            elementoIDDos.addEventListener("click", () => {
+                alert("Tus cookies actuales: " + document.cookie);
+            })
+        }
+
+        let nombre
+        let valor
+        let cantidad = 3;
+        function crearVariasCookies() {
+            const elementoIDTres = document.getElementById("tres")
+            elementoIDTres.addEventListener("click", () => {
+                for (let i = 0; i <= cantidad; i++) {
+                    valor = "Hola mundo numero " + i + " (Contenido)";
+                    document.cookie = nombre + "=" + valor + "; max-age=3600; path=/";
+                } console.log("Cookies creadas: " + document.cookie);
+            })
+
         }
 
         function borrarCookie() {
-            document.cookie = "testcookie= max-age=0; path=/";
-            console.log("Cookie con nombre <b>testcookie</b> eliminada correctamente !")
-        }
-        function leerCookie() {
-            alert("Tus cookies actuales: " + document.cookie);
+            const elementoIDCuatro = document.getElementById("cuatro")
+            elementoIDCuatro.addEventListener("click", () => {
+                if (document.cookie === " testcookie") {
+                    document.cookie = "testcookie= max-age=0; path=/";
+                    alert("Cookie con nombre testcookie eliminada correctamente !")
+                } else if (document.cookie === "") {
+                    alert("La cookie esta vacía")
+                } else if (document.cookie === null || document.cookie === null) {
+                    console.log("La cookie no existe")
+                }
+                // & Si lo que contiene el includes() es verídico y contiene las palabras que se les ha asignado entonces que elimine la cookie correspondiente.
+                if (document.cookie.includes("Cookienumero ") && document.cookie.includes("(Cantidad de Cookies)")) {
+                    for (let i = 0; i <= cantidad; i++) {
+                        document.cookie = nombre + "=" + valor + "; max-age=0; path=/";
+                    }
+                }
+            })
+
         }
 
-        // Configuramos los botones
-        document.getElementById("btnEnviar").onclick = crearCookie;
-        document.getElementById("btnVer").onclick = leerCookie;
-
-        // También se ejecutará al cargar, como tenías tú
         window.onload = function () {
-            console.log("Estado actual de cookies: " + document.cookie);
+            setTimeout(() => {
+                console.log("Cargando Cookies...")
+                setTimeout(() => {
+                    console.log("Finalizando...")
+                    setTimeout(() => {
+                        console.log("Cookies cargadas correctamente")
+                    }, 3000);
+                }, 2000);
+            }, 3000);
+            crearCookie()
+            leerCookie()
+            crearVariasCookies()
+            borrarCookie()
         };
     </script>
 </body>
