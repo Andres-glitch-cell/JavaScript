@@ -40,21 +40,31 @@ $(function () {
 * Ejercicio 6
 & Pon un borde (border) sólido, de color azul y  1 píxel de grosor  (1px solid blue) a todas las imágenes de la página. 
 */
-
+$(function () {
+  $("img").css("border", "1px blue solid")
+})
 /*
 * Ejercicio 7
 & Subraya (text-decoration:underline) los <label> que sean hijos directos de un elemento de la clase item.
-/*
+*/
+$(function () {
+  $(".item > label").css("text-decoration", "underline")
+})
 
 /*
 * Ejercicio 8
 & Pon la fuente de color rojo (color:red) a todos los botones (<button>) que estén dentro del cart_container. 
 */
-
+$(function () {
+  $("#cart_container button").css("color", "red")
+})
 /*
 * Ejercicio 9
 & Pon  la  fuente  de  color  blanco  (color:white)  a todos  los  <label>  que  estén adyacentes a otro <label> y estén dentro de un elemento de la clase item.
 */
+$(function () {
+  $("label + label").css("color", "white")
+})
 
 /*
 * Ejercicio 10
