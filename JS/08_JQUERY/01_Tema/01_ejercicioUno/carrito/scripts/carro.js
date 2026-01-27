@@ -70,17 +70,28 @@ $(function () {
 * Ejercicio 10
 & Pon  la  fuente  de  color  verde  (color:green)  a  todos  los  elementos  que contengan en el texto el símbolo ‘€’ y a todos los <input> de la página.
 */
+$(function () {
+  // TODO: Importante, cuando se modifican filtros y/o atributos que tener en cuenta de como se usan ya que depende de que tengas que usar si son <input> que son etiquetas para INTRODUCIR TEXTO no es texto como hay una <p> o un <br>
+  // ! INCORRECTA ! 
+  // $("input:contains('€')").css("color", "green")
+  // * FORMA CORRECTA *
+  $(":contains('€'), input").css("color", "green");
+})
 
 /*
 * Ejercicio 11
 & Pon el fondo de color amarillo a todos los <div> que estén vacíos. 
 */
-
+$(function () {
+  $("div:empty").css("background-color", "yellow")
+})
 /*
 * Ejercicio 12
 & Pon el fondo de color rojo al primer y último elemento de la clase item.
 */
-
+$(function () {
+  $(".item:first, .item:last").css("background-color", "red")
+})
 /*
 * Ejercicio 13
 & Pon  el  borde  de  color  verde  (border-color:green)  a  las  imágenes de camisetas.
