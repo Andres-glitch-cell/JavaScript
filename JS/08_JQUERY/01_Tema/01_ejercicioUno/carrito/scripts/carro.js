@@ -96,3 +96,12 @@ $(function () {
 * Ejercicio 13
 & Pon  el  borde  de  color  verde  (border-color:green)  a  las  imágenes de camisetas.
 */
+$(function () {
+  // Busca el src="" de la etiqueta <img> que tenga el nombre o que contenga camiseta
+  // ! También se puede hacer con :contains
+  $("img[src*='camiseta']").css({
+    "border-color": "green",
+    "border-style": "solid",
+    "border-width": "1px"
+  })
+})
