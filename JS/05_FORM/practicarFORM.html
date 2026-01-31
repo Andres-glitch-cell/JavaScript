@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <form id="formulario">
+        Nombre: <input type="text" id="campoNombre"><br><br>
+        Dni: <input type="text" id="campoDni"><br><br>
+        Teléfono: <input type="text" id="campoTelefono"><br><br>
+        Foto: <input type="file"><br><br>
+
+        Aficiones:
+        <select id="listaAficiones" onchange="mostrarInfo()">
+            <option value="música">Música</option>
+            <option value="lectura">Lectura</option>
+            <option value="deporte">Deporte</option>
+        </select><br><br>
+
+        Observaciones:
+        <textarea id="campoObservaciones" maxlength="150"></textarea><br><br>
+
+        <input type="button" value="Guardar Cambios" onclick="validarTodo()">
+        <input type="reset" value="Borrar datos introducidos">
+    </form>
+
+    <script>
+        // ! Función Anónima
+        window.onload = function () {
+            var inputNombre = document.getElementById("campoNombre");
+            inputNombre.focus();
+        };
+
+        function mostrarInfo() {
+            var lista = document.getElementById("listaAficiones");
+            var total = lista.length;
+            var indice = lista.selectedIndex;
+            var textoOpcion = lista.options.item(indice).text;
+
+            alert("La longitud de la lista es " + total +
+                "\nEl índice seleccionado es el " + indice +
+                "\nEl valor del índice seleccionado es " + textoOpcion);
+        }
+
+        function validarTodo() {
+            var valorDni = document.getElementById("campoDni").value;
+            var valorTelefono = document.getElementById("campoTelefono").value;
+            var miFormulario = document.getElementById("formulario");
+
+            if (valorDni == "") {
+                alert("El campo Dni es obligatorio");
+            }
+            else if (valorTelefono.length != 9) {
+                alert(" El campo Teléfono debe estar formado por nueve dígitos consecutivos y sin espacios ni guiones entre las cifras");
+            }
+            else if (isNaN(valorTelefono)) {
+                alert("El teléfono solo puede contener números");
+            }
+            else {
+                alert("Enviando...");
+                miFormulario.submit();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

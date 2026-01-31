@@ -24,9 +24,9 @@
         }
 
         .test-box {
-            width: 100px;
+            width: 80%;
             height: 100px;
-            background: #3498db;
+            background: #2baaff;
             margin: 20px auto;
             border-radius: 10px;
             display: flex;
@@ -74,52 +74,215 @@
             padding: 10px;
             list-style: none;
         }
+
+        input {
+            height: 25px;
+            border-radius: 10px;
+            border: 2px rgb(0, 49, 155) solid;
+        }
+
+        /* 1. El Fondo oscuro (Overlay) */
+        .overlay {
+            display: none;
+            /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        /* Animacion box-shadow */
+        @keyframes sombraAnimacionPopUp {
+            0% {
+                box-shadow: 0 5px 30px rgb(255, 118, 118);
+            }
+
+            10% {
+                box-shadow: 0 5px 30px rgb(255, 234, 118);
+            }
+
+            20% {
+                box-shadow: 0 5px 30px rgb(134, 255, 118);
+            }
+
+            30% {
+                box-shadow: 0 5px 30px rgb(118, 255, 255);
+            }
+
+            40% {
+                box-shadow: 0 5px 30px rgb(95, 105, 255);
+            }
+
+            50% {
+                box-shadow: 0 5px 30px rgb(228, 118, 255);
+            }
+
+            60% {
+                box-shadow: 0 5px 30px rgb(255, 118, 118);
+            }
+
+            90% {
+                box-shadow: 0 5px 30px rgb(193, 118, 255);
+            }
+
+            80% {
+                box-shadow: 0 5px 30px rgb(34, 55, 243);
+            }
+
+            90% {
+                box-shadow: 0 5px 30px rgb(118, 255, 129);
+            }
+
+            100% {
+                box-shadow: 0 5px 30px rgb(255, 184, 117);
+            }
+        }
+
+        /* 2. La Ventana Pop-up */
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            width: 350px;
+            border-radius: 8px;
+            animation-name: sombraAnimacionPopUp;
+            animation-iteration-count: infinite;
+            animation-duration: 20s;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        /* Botón de cerrar (X) */
+        .btn-cerrar {
+            float: right;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: #000000;
+
+        }
+
+        /* Botón de acción estilo Windows */
+        .btn-primario {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .alineadoCentro {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="panel">
-        <h1>Practica aquí 🚀</h1>
-        <p>Abre la consola con <b>F12</b> o escribe abajo.</p>
-
+        <h1 style="text-align: center; align-items: center;">Practica aquí 🚀</h1>
+        <p style="text-align: center; align-items: center;">Abre la consola con <b>F12</b> o escribe abajo.</p>
         <div id="cajaPrincipal" class="test-box">CAJA</div>
-
         <hr>
+        <div class="alineadoCentro">
+            <br>
+            <!-- @ POP UP Emergente 2 - Gemini 29-01-2026 -->
+            <div id="abrirPopup2" class="overlay">
+                <div class="popup">
+                    <h3>Te ha salido esto felicidades !</h3>
+                    <p>Esto aún está en proceso...</p>
+                </div>
+            </div>
+            <!-- @ FIN Del POP UP Emergente - Gemini 29-01-2026 -->
 
-        <div class="controles">
-            <button id="btn1">Botón A</button>
-            <button id="btn2" class="especial">Botón B</button>
-            <button id="btn3">Botón C</button>
+            <div class="controles">
+                <!-- @ POP UP Emergente 1 - Gemini 29-01-2026 -->
+                <button id="abrirPopup">Ventana Emergente</button>
+                <div class="overlay" id="miOverlay">
+                    <div class="popup">
+                        <span class="btn-cerrar" id="cerrarX">x</span>
+                        <h3>Aquí irá algo a futuro...</h3>
+                        <p>Esto aún está en proceso...</p>
+                        <button class="btn-primario" id="btnAceptar">Aceptar</button>
+                    </div>
+                </div>
+                <button id="btn1">Borra el Bloque</button>
+                <button id="btn2" class="especial">Botón B</button>
+                <button id="btn3">Botón C</button>
+            </div>
         </div>
-
         <ul id="lista">
             <li class="item">Elemento 1</li>
             <li class="item">Elemento 2</li>
             <li class="item">Elemento 3</li>
         </ul>
-        <input type="text" id="campoTexto" placeholder="Escribe algo aquí...">
+        <form id="formulario">
+            <input type="text" placeholder="Escribe algo aquí...">
+        </form>
     </div>
 
     <script>
-        /* <!-- * Pintar del ID lista el Elemento 1 y 3 --!> */
+
+        function cerrarVentanaEmergenteUno() {
+            $("#cerrarX").click(() => {
+                $("#miOverlay").fadeOut(800)
+            })
+        }
+
+        function popUpEmergente() {
+            $('#abrirPopup').on('click', function () {
+                $('#miOverlay').fadeIn(1000);
+            });
+        }
+        function popUpEmergenteDos() {
+            $('#btnAceptar').on('click', function () {
+                $("#miOverlay").fadeOut(800)
+                setTimeout(() => {
+                    $("#abrirPopup2").fadeIn(1000)
+                    setTimeout(() => {
+                        $("#abrirPopup2").fadeOut(1000)
+                    }, 3000);
+                }, 1000);
+            });
+        }
+
+
+        /* <!-- @ !!!! IGNORAR !!!!! --!> */
+        // $(document).on('keydown', function (event) {
+        //     if (event.key === " Escape") {
+        //         $('#miOverlay').fadeOut(200);
+        //     }
+        // });
+
+        /* <!-- * Pintar del ID lista el Elemento 1 y 3 && cambiar .text() Elemento 1 y Elemento 2 --!>
+                */
         $(function () {
+            /* <!-- @ function mouseEnter() --!> */
             function mouseOverElemento1Y2() {
-                $(".item:first, .item:last").mouseenter(function () {
-                    /* <!-- & Activa modo pointer en mouseEnter() en :first --!> */
+                /* <!-- & Activa modo pointer en mouseEnter() en :first --!> */
+                $(" .item:first, .item:last").mouseenter(function () {
                     $(".item:first").css("cursor", "pointer")
                     /* <!-- & Activa modo pointer en mouseEnter() en :last --!> */
                     $(".item:last").css("cursor", "pointer")
                     /* <!-- TODO: Colores --!> */
+                    $(".item:first").text("Clícame para ver que ocurre (F12)")
+                    $(".item:last").text("Clícame para ver que ocurre (F12)")
                     $(".item:first").css("color", "red")
                     $(".item:last").css("color", "red")
-
-                    /* <!-- ! JAVASCRIPT NATIVE --!> */
                     /* <!-- @ function onClick() --!> */
                     $(function () {
                         var cl = console.log
                         $(".item:first").click(function () {
-                            let elemento = $(this);
+                            let elementoUno = $(".item:first");
+                            let elementoDos = $(".item:last");
                             setTimeout(() => {
                                 cl("Espera estimada unos x segundos indefinidos...")
                                 setTimeout(() => {
@@ -131,7 +294,10 @@
                                             setTimeout(() => {
                                                 cl("Finalizado")
                                                 setTimeout(function () {
-                                                    elemento.text("Mi texto ha cambiado después unos largos segundos.");
+                                                    elementoUno.text("Mi texto ha cambiado después unos largos segundos.");
+                                                    setTimeout(() => {
+                                                        elementoDos.text("Mi texto ha cambiado 2 segundos después del primer elemento.")
+                                                    }, 2000);
                                                 }, 2000);
                                             }, 3000);
                                         }, 2000);
@@ -141,13 +307,58 @@
                         });
                     });
                 });
-                $(".item:first").mouseout(function () {
+                /* <!-- @ function mouseOut() --!> */
+                $(".item:first, .item:last").mouseout(function () {
+                    $(".item:first").text("Elemento 1")
+                    $(".item:last").text("Elemento 3")
                     $("#lista .item:first").css("color", "")
                     $("#lista .item:last").css("color", "")
                 });
             }
-            mouseOverElemento1Y2()
+
+            /* <!-- @ function .hide() + alert("") --!> */
+            function botonA() {
+                var clickUser = 0;
+                $("#btn1").click(function () {
+                    clickUser++
+                    $("#cajaPrincipal").remove();
+                    if (clickUser === 1) {
+                        console.log("Caja Econdida correctamente, número de clicks en Botón A " + clickUser)
+                    } else if (clickUser > 1) {
+                        if (($("#cajaPrincipal").hide())) {
+                            
+                        }
+                    }
+                });
+            }
+
+            /* <!-- @ ACABAR ! --!> */
+            function buttonSubmit() {
+                $("#enviarTexto").keypress(function () {
+                });
+            }
+
+            function submitTexto() {
+
+            }
+
+            /* <!-- @ function .focus() on <input> --!> */
+            function onFocusInput() {
+                $("#campoTexto").focus()
+            }
+            $(function () {
+                mouseOverElemento1Y2()
+                botonA()
+                onFocusInput
+                popUpEmergente()
+                popUpEmergenteDos()
+                cerrarVentanaEmergenteUno()
+            });
         })
+
+
+
+
     </script>
 
 </body>
