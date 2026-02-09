@@ -138,7 +138,6 @@
             <button type="submit" id="btnGuardar">Guardar</button>
             <button type="reset"> Borrar </button>
             <button type="button" id="btnCrearFORM">Crear Otro Formulario</button>
-
         </div>
     </form>
 
@@ -172,7 +171,7 @@
                 // ^ Salimos de la función para no seguir validando lo demás ^
                 return;
             } else if (!regNombre.test(valorNombre)) {
-                alert("Formato de nombre inválido (2-20 letras) ❌");
+                alert("Formato de nombre inválido (2-20 letras)");
                 e.preventDefault();
                 return
             } else {

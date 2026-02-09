@@ -1,6 +1,6 @@
 import React from 'react';
-import { ReactComponent as PaperIcon } from '../assets/paper.svg';
-import { ReactComponent as ModelIcon } from '../assets/model.svg';
+import PaperIcon from '../assets/paper.svg?react';
+import ModelIcon from '../assets/model.svg?react';
 import './Results.css';
 
 const Results = ({ query }) => {

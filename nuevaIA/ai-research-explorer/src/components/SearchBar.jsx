@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 // Only import the SVG here, not in App.jsx
-import { ReactComponent as SearchIcon } from '../assets/search.svg';
+import SearchIcon from '../assets/search.svg?react';
 import './SearchBar.css';
 
 const SearchBar = ({ onSearch }) => {
