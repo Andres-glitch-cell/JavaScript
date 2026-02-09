@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diferencia Real de PreventDefault</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background-color: #e5e5e5;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 350px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .rojo {
+            background-color: #d63031;
+        }
+
+        .verde {
+            background-color: #27ae60;
+        }
+
+        .status {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h3>❌ Formulario SIN JS</h3>
+        <p>Si hay un error, el navegador se reinicia y <b>pierdes todo</b>.</p>
+        <form action="">
+            <input type="text" placeholder="Escribe tu nombre..." value="Juan Pérez">
+            <input type="text" id="telMal" placeholder="Teléfono (pon letras)" value="Mi Telefono">
+            <button type="submit" class="rojo">ENVIAR A CIEGAS</button>
+        </form>
+        <div class="status">Estado: <span id="stMal">Esperando...</span></div>
+    </div>
+
+    <div class="box">
+        <h3>✅ Formulario CON Bloqueo</h3>
+        <p>Si hay un error, <b>detenemos el tiempo</b> y tus datos se quedan.</p>
+        <form id="formBien">
+            <input type="text" placeholder="Escribe tu nombre..." value="Juan Pérez">
+            <input type="text" id="telBien" placeholder="Teléfono (pon letras)" value="Mi Telefono">
+            <button type="submit" class="verde">VALIDAR Y ENVIAR</button>
+        </form>
+        <div class="status">Estado: <span id="stBien">Esperando...</span></div>
+    </div>
+
+    <script>
+        // 1. En el primer formulario NO ponemos e.preventDefault()
+        // El navegador seguirá su "instinto" de recargar la página.
+
+        // 2. Para el segundo formulario, sí tomamos el control:
+        document.getElementById("formBien").addEventListener("submit", function (e) {
+            e.preventDefault(); // <-- AQUÍ ESTÁ LA MAGIA
+
+            const tel = document.getElementById("telBien").value;
+            const status = document.getElementById("stBien");
+
+            if (isNaN(tel)) {
+                status.style.color = "red";
+                status.innerText = "❌ ERROR: El teléfono está mal, pero ¡mira!, tus datos siguen ahí arriba.";
+            } else {
+                status.style.color = "green";
+                status.innerText = "✅ Todo perfecto.";
+            }
+        });
+
+        // Este código solo sirve para avisarte que la página se cargó de nuevo
+        window.onload = () => {
+            console.log("Página cargada/recargada");
+        };
+    </script>
+</body>
+
+</html>

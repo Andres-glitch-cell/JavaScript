@@ -202,15 +202,35 @@
                 </div>
             </div>
             <!-- @ FIN Del POP UP Emergente - Gemini 29-01-2026 -->
-
             <div class="controles">
                 <!-- @ POP UP Emergente 1 - Gemini 29-01-2026 -->
                 <button id="abrirPopup">Ventana Emergente</button>
-                <div class="overlay" id="miOverlay">
+                <button id="imposibleDarClick">No me podrás dar click</button>
+                <!-- ! Ventana Emergente CODE -->
+                <div class=" overlay" id="miOverlay">
                     <div class="popup">
                         <span class="btn-cerrar" id="cerrarX">x</span>
                         <h3>Aquí irá algo a futuro...</h3>
                         <p>Esto aún está en proceso...</p>
+                        <button class="btn-primario" id="btnAceptar">Aceptar</button>
+                    </div>
+                </div>
+                <!-- @ Ventana Emergente para el bloque de Borrar Bloque -->
+                <div class="overlay" id="avisoNoMasClicks">
+                    <div class="popup">
+                        <span class="btn-cerrar" id="cerrarX">x</span>
+                        <h3>Un click es suficiente</h3>
+                        <p>No hace falta que le des mas clicks</p>
+                        <button class="btn-primario" id="btnAceptarClicks">Aceptar</button>
+                    </div>
+                </div>
+
+                <!-- @ Ventana Emergente para el bloque de Borrar Bloque 2.0 -->
+                <div class="overlay" id="avisoBloqueBorrado">
+                    <div class="popup">
+                        <span class="btn-cerrar" id="cerrarX">x</span>
+                        <h3>Bloque CAJA Eliminado correctamente</h3>
+                        <p>Prueba a dar mas clicks</p>
                         <button class="btn-primario" id="btnAceptar">Aceptar</button>
                     </div>
                 </div>
@@ -230,17 +250,44 @@
     </div>
 
     <script>
+        var anchoVentanaRandom = $(window).width() * Number(Math.random().toFixed(1))
+        var altoVentanaRandom = $(window).height() * Number(Math.random().toFixed(1))
+
+        function botonB() {
+            let vecesUsuarioEstaEncimaDeBoton
+            $("#imposibleDarClick").css("position", "relative").on("mouseover", () => {
+                $("#imposibleDarClick").animate({
+                    left: 1000
+                }, 200)
+            })
+
+            $("#imposibleDarClick").css("position", "relative").on("mouseout", () => {
+                $("#imposibleDarClick").animate({
+                    left: ""
+                }, 200)
+            })
+        }
 
         function cerrarVentanaEmergenteUno() {
             $("#cerrarX").click(() => {
                 $("#miOverlay").fadeOut(800)
             })
         }
-
+        function popUpEmergenteNoMasClicks() {
+            $("#btn1").on("click", () => {
+                $("#avisoNoMasClicks").fadeIn(1000)
+            })
+        }
         function popUpEmergente() {
             $('#abrirPopup').on('click', function () {
                 $('#miOverlay').fadeIn(1000);
             });
+        }
+
+        function botonAceptarNoMasClicks() {
+            $("#btnAceptarClicks").on("click", () => {
+                $("#avisoNoMasClicks").fadeOut(1000)
+            })
         }
         function popUpEmergenteDos() {
             $('#btnAceptar').on('click', function () {
@@ -253,14 +300,6 @@
                 }, 1000);
             });
         }
-
-
-        /* <!-- @ !!!! IGNORAR !!!!! --!> */
-        // $(document).on('keydown', function (event) {
-        //     if (event.key === " Escape") {
-        //         $('#miOverlay').fadeOut(200);
-        //     }
-        // });
 
         /* <!-- * Pintar del ID lista el Elemento 1 y 3 && cambiar .text() Elemento 1 y Elemento 2 --!>
                 */
@@ -323,10 +362,10 @@
                     clickUser++
                     $("#cajaPrincipal").remove();
                     if (clickUser === 1) {
-                        console.log("Caja Econdida correctamente, número de clicks en Botón A " + clickUser)
+
                     } else if (clickUser > 1) {
                         if (($("#cajaPrincipal").hide())) {
-                            
+                            popUpEmergenteNoMasClicks()
                         }
                     }
                 });
@@ -353,6 +392,8 @@
                 popUpEmergente()
                 popUpEmergenteDos()
                 cerrarVentanaEmergenteUno()
+                botonAceptarNoMasClicks()
+                botonB()
             });
         })
 

@@ -1,71 +1,215 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
-    <title>Ejercicio 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Formulario Estilizado</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --primary-hover: #357abd;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --error-color: #e74c3c;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        #formulario {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        /* Cambiamos a button para que sea más estándar */
+        button[type="submit"],
+        input[type="reset"] {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--primary-hover);
+        }
+    </style>
 </head>
 
 <body>
+    <!-- ! Crear Cookies Hacer mas expresiones Regulares y Crear Nodos -->
+    <form id="formulario" action="#">
+        <h2>Registro</h2>
 
-    <form id="formulario">
-        Nombre: <input type="text" id="campoNombre"><br><br>
-        Dni: <input type="text" id="campoDni"><br><br>
-        Teléfono: <input type="text" id="campoTelefono"><br><br>
-        Foto: <input type="file"><br><br>
+        <div class="form-group">
+            <label for="campoNombre">Nombre completo:</label>
+            <input type="text" id="campoNombre" placeholder="Ej. Juan Pérez">
+        </div>
 
-        Aficiones:
-        <select id="listaAficiones" onchange="mostrarInfo()">
-            <option value="música">Música</option>
-            <option value="lectura">Lectura</option>
-            <option value="deporte">Deporte</option>
-        </select><br><br>
+        <div class="form-group">
+            <label for="campoDni">DNI / NIE:</label>
+            <input type="text" id="campoDni" placeholder="12345678X">
+        </div>
 
-        Observaciones:
-        <textarea id="campoObservaciones" maxlength="150"></textarea><br><br>
+        <div class="form-group">
+            <label for="campoTelefono">Teléfono:</label>
+            <input type="text" id="campoTelefono" placeholder="9 cifras">
+        </div>
 
-        <input type="button" value="Guardar Cambios" onclick="validarTodo()">
-        <input type="reset" value="Borrar datos introducidos">
+        <div class="button-group">
+            <button type="submit" id="btnGuardar">Guardar</button>
+            <input type="reset" value="Borrar">
+        </div>
     </form>
 
     <script>
-        // ! Función Anónima
+        const miFormulario = document.getElementById("formulario");
+        // 2. Escuchamos el evento 'submit' y usamos el parámetro 'e' (el evento)
+        miFormulario.addEventListener("submit", function (e) {
+
+            var valorNombre = document.getElementById("campoNombre").value.trim();
+            var valorDni = document.getElementById("campoDni").value.trim();
+            var valorTelefono = document.getElementById("campoTelefono").value.trim();
+            const elementoGuardar = document.getElementById("btnGuardar")
+
+            // ^ Coge 8 digitos y despues una letra la (i) hace que la letra sea mayus o minus.
+            var regDni = /^\d{8}[A-Z]$/i;
+
+            // ^ Nombre con las letras dichas \s -> Espacio {2,20} -> El rango y la (i) diferenciar entre mayus y minus.
+            var regNombre = /^[A-ZÑÁÉÍÓÚü\s]{2,20}$/i;
+            /*
+            [IMPORTANT] 🛠️		 ^		Al inicio	"Empieza por..."	^6 (Tiene que empezar por 6)
+            [IMPORTANT] 🛠️		 $		Al final	"Termina aquí"		9$ (Tiene que acabar en 9)
+            */
+            // ^ Teléfono tenga 9 números obligatoriamente^
+            var regTelefono = /^\d{9}$/
+
+            /* DONE: PART 1 EVERYTHING DONE */
+            if (valorNombre === "") {
+                alert("El nombre es obligatorio ❌");
+                console.log("Si te muestra esto es que el campo nombre esta vacío")
+                e.preventDefault();
+                // ^ Salimos de la función para no seguir validando lo demás ^
+                return;
+            } else if (!regNombre.test(valorNombre)) {
+                alert("Formato de nombre inválido (2-20 letras) ❌");
+                e.preventDefault();
+                return;
+            } else {
+                /* TODO: NOMBRE COOKIE */
+                var cookieNombre = "nombreUsuario=" + valorNombre + ";path=/";
+                document.cookie = cookieNombre;
+                console.log("✅ Cookie guardada: " + cookieNombre);
+                console.log("\n---- Nombre Regitrado Correctamente ----\n")
+            }
+
+            /* DONE: PART 2 EVERYTHING DONE */
+            if (valorDni === "") {
+                alert("❌ El DNI es obligatorio");
+                // ^ Previene el envío ^
+                e.preventDefault();
+                return;
+            } else if (!regDni.test(valorDni)) {
+                console.log("❌ El formato del DNI es incorrecto (8 números y 1 letra)");
+                e.preventDefault();
+                return;
+            } else {
+                /* TODO: DNI COOKIE */
+                var cookieDNI = "dniUsuario=" + valorDni + ";path=/";
+                document.cookie = cookieDNI;
+                console.log("✅ Cookie guardada: " + cookieDNI);
+                console.log("\n---- DNI Regitrado Correctamente ----\n")
+            }
+            /* DONE: PART 3 EVERYTHING DONE */
+            // PASO 3: Validar Teléfono
+            if (valorTelefono.length !== 9 || !(regTelefono.test(valorTelefono))) {
+                alert("❌ El teléfono debe tener 9 dígitos numéricos.");
+                e.preventDefault();
+                return;
+            } else {
+                /* TODO: TELEFONO COOKIE */
+                var cookieTelefono = "telefonoUsuario=" + valorTelefono + ";path=/";
+                document.cookie = cookieTelefono;
+                console.log("✅ Cookie guardada: " + cookieTelefono);
+                console.log("\n---- Teléfono Registrado Correctamente ----\n")
+            }
+
+            // [IMPORTANT] Si el código llega aquí, NO se ha ejecutado ningún preventDefault
+            miFormulario.reset()
+            console.log("\n ----✅ Validaciones pasadas. Enviando formulario... ----\n");
+            setTimeout(() => {
+                console.log("\n---- Formulario Enviado ----\n")
+            }, 3000);
+            alert("Gracias por esperar a Enviar el Formulario :)");
+        })
         window.onload = function () {
-            var inputNombre = document.getElementById("campoNombre");
-            inputNombre.focus();
+            document.getElementById("campoNombre").focus();
         };
 
-        function mostrarInfo() {
-            var lista = document.getElementById("listaAficiones");
-            var total = lista.length;
-            var indice = lista.selectedIndex;
-            var textoOpcion = lista.options.item(indice).text;
-
-            alert("La longitud de la lista es " + total +
-                "\nEl índice seleccionado es el " + indice +
-                "\nEl valor del índice seleccionado es " + textoOpcion);
-        }
-
-        function validarTodo() {
-            var valorDni = document.getElementById("campoDni").value;
-            var valorTelefono = document.getElementById("campoTelefono").value;
-            var miFormulario = document.getElementById("formulario");
-
-            if (valorDni == "") {
-                alert("El campo Dni es obligatorio");
-            }
-            else if (valorTelefono.length != 9) {
-                alert(" El campo Teléfono debe estar formado por nueve dígitos consecutivos y sin espacios ni guiones entre las cifras");
-            }
-            else if (isNaN(valorTelefono)) {
-                alert("El teléfono solo puede contener números");
-            }
-            else {
-                alert("Enviando...");
-                miFormulario.submit();
-            }
-        }
     </script>
-
 </body>
 
 </html>

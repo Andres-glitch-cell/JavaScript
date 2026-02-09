@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Cookies interactivas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #464646;
+        }
+
+        h1 {
+            color: #1a3c5e;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0055aa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ejercicio 2 - Gestión de cookies</h1>
+
+    <button onclick="crearCookie()">Crear cookie</button>
+    <button onclick="modificarCookie()">Modificar cookie</button>
+    <button onclick="mostrarCookies()">Mostrar cookies</button>
+    <button onclick="leerCookie()">Leer cookie</button>
+    <button onclick="borrarCookie()">Borrar cookie</button>
+
+    <script>
+        // =============================================================
+        // FUNCIONES DE LOS BOTONES (CON NOMBRES CLAROS)
+        // =============================================================
+
+        function crearCookie() {
+            let nombreUsuario = prompt("Nombre de la cookie:");
+            if (!nombreUsuario) {
+                return;
+            } else {
+                let valorDato = prompt("Valor de la cookie:");
+                let cantidadDias = prompt("¿Cuántos días quieres que dure?");
+                // [IMPORTANT] Preguntado a Gemini.
+                let objetoFecha = new Date();
+                objetoFecha.setTime(objetoFecha.getTime() + (cantidadDias * 24 * 60 * 60 * 1000));
+                let formatoExpiracion = "expires=" + objetoFecha.toUTCString();
+                document.cookie = nombreUsuario + "=" + valorDato + ";" + formatoExpiracion + ";path=/";
+                alert("✅ Cookie " + nombreUsuario + " creada correctamente.");
+            }
+        }
+
+        function modificarCookie() {
+            let nombreABuscar = prompt("¿Qué cookie quieres cambiar?");
+            // ! IMPORTANTE PONER EL + "="
+            if (document.cookie.includes(nombreABuscar + "=")) {
+                let nuevoValorDato = prompt("Introduce el nuevo valor:");
+                document.cookie = nombreABuscar + "=" + nuevoValorDato + ";path=/";
+                alert("🔄 Cookie " + nombreABuscar + " actualizada.");
+            } else {
+                alert("❌ No se encontró ninguna cookie con ese nombre.");
+            }
+        }
+
+        function mostrarCookies() {
+            let todasLasCookies = document.cookie;
+            if (todasLasCookies === "") {
+                alert("El almacén de cookies está vacío.");
+            } else {
+                // [IMPORTANT] Separamos por punto y coma y unimos con salto de línea para el alert
+                let listaFormateada = todasLasCookies.split(";").join("\n");
+                alert("Lista de cookies guardadas:\n" + listaFormateada);
+            }
+        }
+
+        function leerCookie() {
+            let cookieActual
+            let partes
+            let nombreDeEstaCookie
+            let valorDeEstaCookie
+            let nombreBuscado = prompt("Nombre de la cookie?");
+            if (!nombreBuscado) return;
+            let todasLasCookies = document.cookie.split("; ");
+            for (let i = 0; i < todasLasCookies.length; i++) {
+                cookieActual = todasLasCookies[i];
+                partes = cookieActual.split("=");
+                nombreDeEstaCookie = partes[0];
+                valorDeEstaCookie = partes[1];
+                if (nombreDeEstaCookie === nombreBuscado) {
+                    alert(valorDeEstaCookie);
+                    return;
+                }
+            }
+            alert("La cookie no existe");
+        }
+
+        function borrarCookie() {
+            let nombreAEliminar = prompt("¿Qué cookie quieres borrar definitivamente?");
+            if (document.cookie.includes(nombreAEliminar + "=")) {
+                let fechaPasada = "expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                document.cookie = nombreAEliminar + "=; " + fechaPasada + "; path=/;";
+                alert("Cookie" + nombreAEliminar + "borrada del sistema.");
+            } else {
+                alert("No existe esa cookie, no se puede borrar.");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

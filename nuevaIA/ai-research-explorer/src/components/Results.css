@@ -1,0 +1,59 @@
+.results {
+    margin-top: 1.5rem;
+    animation: fadeIn 0.8s;
+}
+
+.results h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.results ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: #f4f6fa;
+    border-radius: 8px;
+    margin-bottom: 0.7rem;
+    padding: 0.7rem 1rem;
+    box-shadow: 0 1px 4px rgba(79, 140, 255, 0.06);
+    font-size: 1.05rem;
+}
+
+.results .highlight {
+    color: #4f8cff;
+    font-weight: 600;
+}
+
+.results .demo-note {
+    color: #888;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.results-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #aaa;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

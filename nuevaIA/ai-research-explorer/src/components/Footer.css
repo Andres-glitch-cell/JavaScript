@@ -1,0 +1,25 @@
+.footer {
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    background: #f4f6fa;
+    color: #555;
+    border-top: 1px solid #eaeaea;
+    margin-top: 2rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-social a {
+    color: #4f8cff;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.footer-social a:hover {
+    color: #2d3e50;
+    transform: scale(1.15) rotate(-8deg);
+}

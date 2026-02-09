@@ -1,0 +1,33 @@
+.header {
+    background: linear-gradient(120deg, #2d3e50 60%, #4f8cff 100%);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.header-content {
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.header-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}

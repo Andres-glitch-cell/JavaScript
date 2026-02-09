@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Cookies básicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: rgb(97, 97, 97);
+        }
+
+        h1 {
+            color: #1a3c5e;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 24px;
+            font-size: 20px;
+            background: #0066cc;
+            color: rgb(44, 30, 30);
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ffb8ed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ejercicio 1</h1>
+
+    <button onclick="crearCookie1()">Crear cookie 1</button>
+    <button onclick="crearCookie2()">Crear cookie 2</button>
+    <button onclick="mostrarCookies()">Mostrar cookies</button>
+    <button onclick="borrarCookie1()">Borrar cookie 1</button>
+    <button onclick="borrarCookie2()">Borrar cookie 2</button>
+
+    <script>
+        function crearCookie1() {
+            document.cookie = "cookieUno=valor de la cookie 1; path=/";
+            alert("La cookie se ha creado satisfactoriamente.");
+        }
+
+        function crearCookie2() {
+            document.cookie = "cookieDos=valor de la cookie 2; path=/";
+            alert("La cookie se ha creado satisfactoriamente.");
+        }
+
+        function mostrarCookies() {
+            if (!document.cookie) {
+                alert("No hay cookies creadas hasta el momento.");
+            } else {
+                alert(document.cookie);
+            }
+        }
+
+        function borrarCookie1() {
+            document.cookie = "cookieUno=; max-age=0; path=/";
+            alert("La cookie 1 se ha eliminado satisfactoriamente.");
+        }
+
+        function borrarCookie2() {
+            document.cookie = "cookieDos=; max-age=0; path=/";
+            alert("La cookie 2 se ha eliminado satisfactoriamente.");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practicar Desde Cero</title>
+</head>
+
+<body>
+    <!-- 📝 Entradas de Texto y Datos
+text: El campo estándar para texto corto. ⌨️
+password: Para contraseñas (esconde los caracteres). 🔒
+email: Valida que el texto tenga formato de correo electrónico. 📧
+number: Solo permite números y añade flechitas para subir/bajar. 🔢
+tel: Para números de teléfono (útil para abrir el teclado numérico en móviles). 📞
+url: Para direcciones web. 🌐
+search: Diseñado para cuadros de búsqueda (a veces añade una "X" para borrar). 🔍
+
+🔘 Selección y Opciones
+checkbox: Casillas de verificación (puedes marcar varias). ✅
+radio: Botones de opción (solo puedes elegir uno de un grupo). 🔘
+range: Un deslizador o "slider" para elegir un valor en un rango. 📏
+select (Aunque es una etiqueta aparte, actúa como input): Listas desplegables. 🔽
+
+📅 Fechas y Horas
+date: Selector de día, mes y año. 📅
+datetime-local: Fecha y hora completa (sin zona horaria). 🕒
+month: Solo mes y año. 🗓️
+week: Para elegir una semana específica del año. 🧱
+time: Selector de hora y minutos. ⏱️
+
+🎨 Otros Tipos Especiales
+color: Abre un selector de colores del sistema. 🎨
+file: Para subir archivos desde el ordenador. 📁
+hidden: No se ve en la pantalla, pero envía datos "ocultos" al servidor. 👻
+image: Un botón de envío, pero usando una imagen personalizada. 🖼️
+
+🚀 Botones de Acción
+submit: El botón principal para enviar el formulario. 📩
+reset: Borra todo lo escrito y deja el formulario como al principio. 🧹
+button: Un botón genérico que no hace nada por defecto (se usa con JavaScript). 🖱️ -->
+
+    <form id="idFormulario">
+        Nombre <input id="idNombre" type="text" /> <br> <br>
+        Edad <input id="idEdad" type="text" /> <br> <br>
+        Instituto <input id="idInstituto" type="text" /> <br><br>
+        Nacionalidad <input id="idNacionalidad" type="text" /> <br><br>
+        <button type="submit">Enviar formulario</button>
+    </form>
+
+    <script>
+        window.onload = function () {
+            const elementoFormulario = document.getElementById("idFormulario")
+            elementoFormulario.addEventListener("submit", (e) => {
+                e.preventDefault()
+                /* @ Expresiones Regulares */
+                const valorNombre = document.getElementById("idNombre").value.trim()
+                const valorEdad = document.getElementById("idEdad").value.trim();
+                const valorInstituto = document.getElementById("idInstituto").value.trim();
+                const valorNacionalidad = document.getElementById("idNacionalidad").value.trim();
+
+                // TODO: Nombre: Letras, espacios, tildes y ñ.
+                let regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+                // TODO: Edad: Números de 1 a 3 dígitos que representen un rango lógico (ej. 5 a 110).
+                let regexEdad = /^\d{1,3}$/;
+
+                // TODO: Instituto: Alfanumérico (letras y números) y espacios.
+                let regexInstituto = /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\s]+$/;
+
+                // TODO: Nacionalidad: Solo letras, entre 5 y 15 caracteres.
+                let regexNacionalidad = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{5,15}$/;
+
+                if (regexNombre.test(valorNombre)) {
+                    alert("Campo nombre correcto")
+                } else {
+                    console.log("El nombre no cumple con la normativa")
+                    e.preventDefault()
+                }
+
+                if (regexEdad.test(valorEdad)) {
+                    alert("Campo edad correcto")
+                } else {
+                    console.log("La edad no cumple con la normativa")
+                    e.preventDefault()
+                    return
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: #f4f6fa;
+            color: #222;
+        }
+
+        header {
+            background: #2d3e50;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            padding: 2rem;
+        }
+
+        .search-section {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.7rem 1.5rem;
+            background: #2d3e50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #1a2533;
+        }
+
+        #results {
+            margin-top: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #eaeaea;
+            color: #555;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>AI Research Explorer</h1>
+        <p>Discover the latest in AI research and models</p>
+    </header>
+    <main>
+        <section class="search-section">
+            <input type="text" id="searchInput" placeholder="Search for papers or models...">
+            <button onclick="search()">Search</button>
+        </section>
+        <section id="results"></section>
+    </main>
+    <footer>
+        <p>&copy; 2026 AI Research Explorer</p>
+    </footer>
+    <script>
+        function search() {
+            const query = document.getElementById('searchInput').value.trim();
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+
+            if (!query) {
+                resultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            // Placeholder: Simulate search results
+            resultsDiv.innerHTML = `
+        <h2>Results for "${query}"</h2>
+        <ul>
+            <li><strong>Paper:</strong> Example Paper on ${query}</li>
+            <li><strong>Model:</strong> Example Model for ${query}</li>
+        </ul>
+        <p>(This is a demo. You can connect this to a real API!)</p>
+    `;
+        }
+    </script>
+</body>
+
+</html>

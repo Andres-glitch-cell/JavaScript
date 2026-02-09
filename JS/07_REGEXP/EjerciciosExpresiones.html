@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicios Expresiones Regulares</title>
+</head>
+
+<body>
+
+    <h1>Elige la opción que desees:</h1>
+
+    <textarea id="textoEntrada" rows="5" cols="45"></textarea>
+    <br><br>
+
+    <select id="selectorRegla">
+        <option value="1">1. Números de 3 dígitos</option>
+        <option value="2">2. Palabras con 'g' al inicio</option>
+        <option value="3">3. Letra seguida de número</option>
+        <option value="4">4. Espacio + Palabra</option>
+        <option value="5">5. No terminan en 's'</option>
+        <option value="6">6. Empieza con 'Inicio'</option>
+        <option value="7">7. Termina con 'Fin'</option>
+        <option value="8">8. Contiene vocales</option>
+        <option value="9">9. Teléfono (123) 456-7890</option>
+        <option value="10">10. Mínimo 3 letras</option>
+        <option value="11">11. Sin la letra 'e'</option>
+        <option value="12">12. Empieza por 'a' o 'b'</option>
+        <option value="13">13. Termina en 'o' u 'a'</option>
+        <option value="14">14. Exactamente 5 letras</option>
+        <option value="15">15. Empieza 'c' y termina 'o'</option>
+    </select>
+
+    <button onclick="probar()">Probar</button>
+    <br>
+    <h4>Resultado:</h4>
+    <div id="resultado">Esperando prueba...</div>
+
+    <script>
+        function probar() {
+            let texto = document.getElementById("textoEntrada").value;
+            let opcion = document.getElementById("selectorRegla").value;
+            let miRegex;
+
+            switch (opcion) {
+                // 1. Encuentra cualquier número de tres dígitos en una cadena
+                case "1": miRegex = /\b\d{3}\b/g
+                    break
+                // 2. Encuentra todas las palabras que comienzan con "g" en una cadena
+                case "2": miRegex = /\bg\w*/gi
+                    break
+                // 3. Encuentra todas las ocurrencias de letras seguidas por un número:
+                case "3": miRegex = /[a-z]\d/gi
+                    break
+                // 4. Encuentra todas las ocurrencias de espacios en blanco seguidos por una palabra:
+                case "4": miRegex = /\s\w+/g
+                    break
+                // 5. Encuentra todas las ocurrencias de palabras que no terminan en "s":
+                case "5": miRegex = /\b\w+[^s\W]\b/g
+                    break
+                // 6. Encuentra todas las lineas que comienzan con "Inicio"
+                case "6": miRegex = /^Inicio.*/gm
+                    break
+                // 7. Encuentra todas las lineas que terminan con "Fin"
+                case "7": miRegex = /.*Fin$/gm
+                    break
+                    // 8. Encuentra todas las ocurrencias de palabras que contienen al menos una vocal.
+                case "8": miRegex = /\b\w*[aeiou]\w*\b/gi
+                    break
+                    // 9. Encuentra todas las ocurrencias de numeros de telefono en el formato (123) 456-7890
+                case "9": miRegex = /\(\d{3}\)\s\d{3}-\d{4}/g
+                    break
+                case "10": miRegex = /\b\w{3,}\b/g
+                    break
+                case "11": miRegex = /\b[^e\s\W]+\b/gi
+                    break
+                case "12": miRegex = /\b[ab]\w*\b/gi
+                    break
+                case "13": miRegex = /\b\w*[oa]\b/gi
+                    break
+                case "14": miRegex = /\b\w{5}\b/g
+                    break
+                case "15": miRegex = /\bc\w*o\b/gi
+                    break
+                default:
+                    console.log("Opción no válida")
+            }
+
+            var encontrado = texto.match(miRegex);
+            var cajaResultado = document.getElementById("resultado");
+
+            if (encontrado) {
+                cajaResultado.innerHTML = "Encontrado: " + encontrado.join(" | ");
+            } else {
+                cajaResultado.innerHTML = "No hay coincidencias.";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
